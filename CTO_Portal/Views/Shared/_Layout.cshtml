@@ -1,0 +1,94 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="icon" href="~/favicon.ico">
+	<script src="~/Scripts/jquery-3.6.0.js"></script>
+	<script src="~/Scripts/jquery-3.6.0.min.js"></script>
+	@Styles.Render("~/Content/css")
+	@Styles.Render("~/myNavStyle")
+	@Scripts.Render("~/bundles/modernizr")
+	<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+	<link href="~/Content/CSS/tablesStyle.css" rel="stylesheet" />
+</head>
+<body style="overflow:visible !important;">
+
+	<nav class="navbar navbar-expand-lg navbar-light bg-white">
+
+		<a id="nv" href="/Home/Index" class="navbar-brand">
+			<img src="~/Content/images/nav-icon-home.png" class="nv-icons" />
+			MAIN MENU
+		</a>
+
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item active">
+					<a class="nav-link" href="https://www.aaup.edu" target="_blank">
+						<img src="~/Content/images/nav-icon-university.png" class="nv-icons" />
+						UNIVERSITY WEBSITE
+					</a>
+				</li>
+				<li class="nav-item active">
+					<a class="nav-link" href="https://portal.aaup.edu/" target="_blank">
+						<img src="~/Content/images/nav-icon-portal.png" class="nv-icons" />
+						EDUGATE ( PORTAL )
+					</a>
+				</li>
+				<li class="nav-item active">
+					<a class="nav-link" href="https://moodle.aaup.edu/" target="_blank">
+						<img src="~/Content/images/nav-icon-moodle.png" class="nv-icons" />
+						AAUP E-LEARNING - MOODLE
+					</a>
+				</li>
+
+				<li class="nav-item dropdown">
+
+					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						<img src="~/Content/images/userProfile.png" class="nv-icons" />
+
+						@{
+							if (Session["id"] != null)
+							{
+								if (Session["type"].ToString().Equals("1"))
+								{
+									@Session["name"].ToString()
+								}
+							}
+						}
+					</a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+						<a class="dropdown-item" href="/home/logout">
+							<img src="~/Content/images/logout.png" class="nv-icons2" />
+							Log out
+						</a>
+					</div>
+				</li>
+			</ul>
+
+			<div class="navbar-brand" href="#">
+				<img src="~/Content/images/logo.png-en-aau.png" width="270" height="70" alt="Image not found">
+			</div>
+		</div>
+	</nav>
+	<div class="container body-content">
+		@RenderBody()
+
+
+	</div>
+	@*<footer class="card-footer footer" >
+		<p>&copy; @DateTime.Now.Year - Clinical Training Office Portal </p>
+	</footer>*@
+
+
+	@Scripts.Render("~/bundles/jquery")
+	@Scripts.Render("~/bundles/bootstrap")
+	@RenderSection("scripts", required: false)
+</body>
+</html>

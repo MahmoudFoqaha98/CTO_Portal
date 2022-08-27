@@ -1,0 +1,207 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<!-- Bootstrap CSS -->
+
+	<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+	<title>@ViewBag.Title - (CTO)</title>
+	@Styles.Render("~/Content/css")
+	@Styles.Render("~/myNavStyle")
+	@Scripts.Render("~/bundles/modernizr")
+
+
+	<!-- Boxicons CDN Link -->
+	<link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+
+
+
+	<script src="~/Scripts/jquery-3.6.0.min.js"></script>
+
+	<link href="~/Content/CSS/tablesStyle.css" rel="stylesheet" />
+	<link href="~/Content/CSS/layoutpage.css" rel="stylesheet" />
+
+
+</head>
+
+<body style="font-weight: bold;">
+	<div class="sidebar">
+		<div class="logo_content">
+			<div class="logo">
+
+				<img src="~/Content/images/Logoaaup.png" width="24" height="24" /> &nbsp; &nbsp; &nbsp;
+				<div class="logo_name">CTO Portal</div>
+			</div>
+			<i class='bx bx-menu' id="btn"></i>
+		</div>
+		<ul class="nav_list">
+			<li>
+				<a href="/Home/adminDashboard">
+					&nbsp;&nbsp;&nbsp;&nbsp;
+					<img src="~/Content/images/icon_home.png" width="24" height="24" />&nbsp;&nbsp;
+					<span class="links_name">Dashboard</span>
+				</a>
+				<span class="tooltip">Dashboard</span>
+			</li>
+			<li>
+				<a href="/Home/groups">
+					&nbsp;&nbsp;&nbsp;&nbsp;
+					<img src="~/Content/images/icon_group.png" width="24" height="24" />&nbsp;&nbsp;
+					<span class="links_name">
+						Groups &nbsp;
+						<span class="badge badge-light">
+							@{ Html.RenderAction("_GroupsCount", "Home"); }
+						</span>
+					</span>
+				</a>
+				<span class="tooltip">Groups</span>
+			</li>
+
+
+			<li>
+				<a href="/Home/Requests">
+					&nbsp;&nbsp;&nbsp;&nbsp;
+					<img src="~/Content/images/icon_request.png" width="24" height="24" />&nbsp;&nbsp;
+					<span class="links_name">
+						Requests &nbsp;
+
+						<span class="badge badge-light">
+							@{ Html.RenderAction("_notification2", "Home"); }
+						</span>
+					</span>
+
+				</a>
+				<span class="tooltip">Requests</span>
+
+			</li>
+			<li>
+				<a href="/Home/AdminChat">
+					&nbsp;&nbsp;&nbsp;&nbsp;
+					<img src="~/Content/images/chat_icon.png" width="24" height="24" />&nbsp;&nbsp;
+					<span class="links_name">
+						Chats &nbsp;
+						<span class="badge badge-light">
+							@{ Html.RenderAction("_ChatCount", "Home"); }
+						</span>
+					</span>
+				</a>
+				<span class="tooltip">Chats</span>
+			</li>
+
+			<li>
+				<a href="/Home/DeletedGroups">
+					&nbsp;&nbsp;&nbsp;&nbsp;
+					<img src="~/Content/images/deleted_groups.png" width="24" height="24" />&nbsp;&nbsp;
+					<span class="links_name">
+						Deleted Groups &nbsp;
+						<span class="badge badge-light">
+							@{ Html.RenderAction("_DeletedGroupsCount", "Home"); }
+						</span>
+					</span>
+				</a>
+				<span class="tooltip">Deleted Groups</span>
+			</li>
+
+			<li>
+				<a href="/Home/ApprovedRequests">
+					&nbsp;&nbsp;&nbsp;&nbsp;
+					<img src="~/Content/images/seen_requests.png" width="24" height="24" />&nbsp;&nbsp;
+					<span class="links_name">
+						Seen Requests &nbsp;
+						<span class="badge badge-light">
+							@{ Html.RenderAction("_notification", "Home"); }
+						</span>
+					</span>
+
+				</a>
+				<span class="tooltip">Seen Requests</span>
+			</li>
+			<li>
+				<a href="/Home/Students">
+					&nbsp;&nbsp;&nbsp;&nbsp;
+					<img src="~/Content/images/icon_student.png" width="24" height="24" />&nbsp;&nbsp;
+					<span class="links_name">Students</span>
+				</a>
+				<span class="tooltip">Students</span>
+			</li>
+
+			<li>
+				<a href="/Home/Trainers">
+					&nbsp;&nbsp;&nbsp;&nbsp;
+					<img src="~/Content/images/icon_trainer.png" width="24" height="24" />&nbsp;&nbsp;
+					<span class="links_name">Trainers</span>
+				</a>
+				<span class="tooltip">Trainers</span>
+			</li>
+
+			<li>
+				<a href="/Home/Hospitals">
+					&nbsp;&nbsp;&nbsp;&nbsp;
+					<img src="~/Content/images/icon_hospital.png" width="24" height="24" />&nbsp;&nbsp;
+					<span class="links_name">Hospitals</span>
+				</a>
+				<span class="tooltip">Hospitals</span>
+			</li>
+
+			<li>
+				<a href="/Home/Courses">
+					&nbsp;&nbsp;&nbsp;&nbsp;
+					<img src="~/Content/images/icon_course.png" width="24" height="24" />&nbsp;&nbsp;
+					<span class="links_name">Courses</span>
+				</a>
+				<span class="tooltip">Courses</span>
+			</li>
+
+			<li>
+				<a href="/Home/Departments">
+					&nbsp;&nbsp;&nbsp;&nbsp;
+					<img src="~/Content/images/icon_department.png" width="24" height="24" />&nbsp;&nbsp;
+					<span class="links_name">Departments</span>
+				</a>
+				<span class="tooltip">Departments</span>
+			</li>
+
+		</ul>
+		<div class="profile_content">
+			<div class="profile">
+				<div class="profile_details">
+					<!--<img src="profile.jpg" alt="">-->
+					<div class="name_job">
+						<div class="name">Prem Shahi</div>
+						<div class="job">Web Designer</div>
+					</div>
+				</div>
+				<a href="/Home/Logout" class="bx bx-log-out" id="log_out" style=" color: white;"></a>	
+			</div>
+		</div>
+	</div>
+	<div class="home_content">
+		@RenderBody()
+	</div>
+
+	<script>
+		let btn = document.querySelector("#btn");
+		let sidebar = document.querySelector(".sidebar");
+
+		btn.onclick = function () {
+			sidebar.classList.toggle("active");
+			if (btn.classList.contains("bx-menu")) {
+				btn.classList.replace("bx-menu", "bx-menu-alt-right");
+			} else {
+				btn.classList.replace("bx-menu-alt-right", "bx-menu");
+			}
+		}
+		
+	</script>
+
+	@RenderSection("scripts", required: false)
+</body>
+
+</html>
+
+
+

@@ -1,0 +1,196 @@
+﻿@model IEnumerable<CTO_Portal.Models.temp_requests>
+
+@{
+	ViewBag.Title = "View Sent Request Status";
+}
+
+<br />
+
+<h1 style="color: #FFFFFF;text-shadow: 0 1px 0 #CCCCCC, 0 2px 0 #c9c9c9, 0 3px 0 #bbb, 0 4px 0 #b9b9b9, 0 5px 0 #aaa, 0 6px 1px rgba(0,0,0,.1), 0 0 5px rgba(0,0,0,.1), 0 1px 3px rgba(0,0,0,.3), 0 3px 5px rgba(0,0,0,.2), 0 5px 10px rgba(0,0,0,.25), 0 10px 10px rgba(0,0,0,.2), 0 20px 20px rgba(0,0,0,.15);color: #FFFFFF;">
+	Sent Request Status
+</h1>
+<br />
+
+<div class="table-wrapper" style="width:100%; background-color:white; padding-top:15px;padding-bottom:10px;">
+
+	@foreach (var item in Model)
+	{
+		<div class="table-wrapper" style="margin: 10px 70px 20px;">
+			<table id="myTable" class="fl-table" style="border: 2px solid #324960" data-name="mytable">
+				<thead>
+					<tr>
+						<th style="width:4%">#</th>
+						<th>Students ID</th>
+						<th>Student Name</th>
+						<th>Course</th>
+						<th>Status</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td class="table_border" style="width:4%">1</td>
+
+						<td class="table_border">
+							@Html.DisplayFor(modelItem => item.student.Id)
+						</td>
+
+						<td class="table_border">
+							@Html.DisplayFor(modelItem => item.student.name)
+						</td>
+
+						<td rowspan="6" class="table_border" >
+							@Html.DisplayFor(modelItem => item.cours.name)
+						</td>
+
+						<td class="table_border">
+							@if (item.email_status.Where(a => a.studentId == item.student.Id).FirstOrDefault().status == true)
+							{
+								<label style="background-color:forestgreen">Approved</label>
+							}
+							else
+							{
+								<label style="background-color:red">Unapproved</label>
+							}
+						</td>
+
+					</tr>
+					<tr>
+						<td class="table_border" style="width:4%">2</td>
+
+						<td class="table_border">
+							@Html.DisplayFor(modelItem => item.student1.Id)
+						</td>
+
+						<td class="table_border">
+							@Html.DisplayFor(modelItem => item.student1.name)
+						</td>
+
+						<td class="table_border">
+							@if (item.email_status.Where(a=>a.studentId==item.student1.Id).FirstOrDefault().status == true)
+							{
+								<label style="background-color:forestgreen">Approved</label>
+							}
+							else
+							{
+								<label style="background-color:red">Unapproved</label>
+							}
+						</td>
+					</tr>
+
+
+					<tr>
+						<td class="table_border" style="width:4%">3</td>
+
+						<td class="table_border">
+							@Html.DisplayFor(modelItem => item.student2.Id)
+						</td>
+
+						<td class="table_border">
+							@Html.DisplayFor(modelItem => item.student2.name)
+						</td>
+
+						<td class="table_border">
+							@if (item.email_status.Count > 2)
+							{
+								if (item.email_status.Where(a => a.studentId == item.student2.Id).FirstOrDefault().status == true)
+								{
+									<label style="background-color:forestgreen">Approved</label>
+								}
+								else
+								{
+									<label style="background-color:red">Unapproved</label>
+								}
+							}
+						</td>
+					</tr>
+
+
+					<tr style=" height:50% ">
+						<td class="table_border" style="width:4%">4</td>
+
+						<td class="table_border">
+							@Html.DisplayFor(modelItem => item.student3.Id)
+						</td>
+
+						<td class="table_border">
+							@Html.DisplayFor(modelItem => item.student3.name)
+						</td>
+
+						<td class="table_border">
+							@if (item.email_status.Count > 3)
+							{
+								if (item.email_status.Where(a => a.studentId == item.student3.Id).FirstOrDefault().status == true)
+								{
+									<label style="background-color:forestgreen">Approved</label>
+								}
+								else
+								{
+									<label style="background-color:red">Unapproved</label>
+								}
+							}
+						</td>
+					</tr>
+
+					<tr>
+						<td class="table_border" style="width:4%">5</td>
+
+						<td class="table_border">
+							@Html.DisplayFor(modelItem => item.student4.Id)
+						</td>
+
+						<td class="table_border">
+							@Html.DisplayFor(modelItem => item.student4.name)
+						</td>
+
+						<td class="table_border">
+							@if (item.email_status.Count > 4)
+							{
+								if (item.email_status.Where(a => a.studentId == item.student4.Id).FirstOrDefault().status == true)
+								{
+									<label style="background-color:forestgreen">Approved</label>
+								}
+								else
+								{
+									<label style="background-color:red">Unapproved</label>
+								}
+							}
+						</td>
+					</tr>
+
+					<tr>
+						<td class="table_border" style="width:4%" >6</td>
+
+						<td class="table_border">
+							@Html.DisplayFor(modelItem => item.student5.Id)
+						</td>
+
+						<td class="table_border">
+							@Html.DisplayFor(modelItem => item.student5.name)
+						</td>
+
+						<td class="table_border">
+							@if (item.email_status.Count > 5)
+							{
+								if (item.email_status.Where(a => a.studentId == item.student5.Id).FirstOrDefault().status == true)
+								{
+									<label style = "background-color:forestgreen" >Approved</label>
+								}
+								else
+								{
+									<label style="background-color:red" >Unapproved</label>
+								}
+							}
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	}
+</div>
+<br />
+<div>
+	<a href="/Home/CreateRequest" class="btn btn-warning btn-round-lg btn-lg">
+		<i class="fas fa-arrow-circle-left"></i>
+		Back
+	</a>
+</div>

@@ -1,0 +1,187 @@
+﻿@model IEnumerable<CTO_Portal.Models.verified_requests>
+
+@{
+	ViewBag.Title = "Requests";
+	Layout = "~/Views/Shared/_LayoutAdminDashboard.cshtml";
+}
+
+
+<link href="~/Content/CSS/tablesStyle.css" rel="stylesheet" />
+
+<div style="width: 95%; padding-top: 15px; padding-bottom: 10px; margin-left: 2%;">
+	
+	<h1 style="color: #FFFFFF;text-shadow: 0 1px 0 #CCCCCC, 0 2px 0 #c9c9c9, 0 3px 0 #bbb, 0 4px 0 #b9b9b9, 0 5px 0 #aaa, 0 6px 1px rgba(0,0,0,.1), 0 0 5px rgba(0,0,0,.1), 0 1px 3px rgba(0,0,0,.3), 0 3px 5px rgba(0,0,0,.2), 0 5px 10px rgba(0,0,0,.25), 0 10px 10px rgba(0,0,0,.2), 0 20px 20px rgba(0,0,0,.15);color: #FFFFFF;">
+		Requests
+	</h1>
+
+	<table>
+		<tr>
+			<td style="width:77.7%;">   <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search..." title="Type in a name">  </td>
+			<td style="width: 100%; ">  @Html.DropDownList("courseId", null, "Courses", htmlAttributes: new { @class = "select form-control", @id = "myInput2", @onchange = "myFunction2()" })</td>
+		</tr>
+	</table>
+</div>
+
+<div class="table-wrapper" style="width: 95%; background-color: white; padding-top: 15px; padding-bottom: 10px; margin-left: 2%;">
+
+
+	@foreach (var item in Model)
+	{
+	<div>
+		@using (Html.BeginForm("Requests", "Home", FormMethod.Post))
+		{
+
+			@Html.AntiForgeryToken()
+
+			<input type="hidden" value="@item.id" name="id" />
+
+			<div class="table-wrapper" style="margin: 10px 70px 20px;">
+				<table class="myTable fl-table" data-name="mytable" style="border: 2px solid #324960">
+					<thead data-name="heads">
+						<tr>
+							<th class="table_border" style="width:5%;">#</th>
+							<th class="table_border">Student ID</th>
+							<th class="table_border">Student Name</th>
+							<th class="table_border">@Html.DisplayNameFor(model => model.cours.name)</th>
+							<th class="table_border">Note</th>
+							<th class="table_border">Actions</th>
+						</tr>
+					</thead>
+
+					<tbody>
+						<tr>
+							<td class="table_border" style="width:5%;">1</td>
+							<td class="table_border">@Html.DisplayFor(modelItem => item.student.Id)</td>
+							<td class="table_border">@Html.DisplayFor(modelItem => item.student.name)</td>
+							<td rowspan="6" class="table_border">@Html.DisplayFor(modelItem => item.cours.name)</td>
+							<td rowspan="6" style="width:20%" class="table_border">@Html.DisplayFor(modelItem => item.note)</td>
+							<td rowspan="6" class="table_border">
+								<button type="submit" class="btn btn-sm btn-primary" name="CreateGroup" value="CreateGroup">
+									<img src="~/Content/images/icon_add.png" class="nv-icons2" />
+									Create Group
+								</button>
+								<br /><br />
+								<button type="submit" class="btn btn-sm btn-success" name="seenRequests" value="seenRequests">
+									<i class="fas fa-check"></i>
+									Seen
+								</button>
+
+							</td>
+						</tr>
+						<tr>
+							<td class="table_border" style="width:5%;">2</td>
+							<td class="table_border">@Html.DisplayFor(modelItem => item.student1.Id)</td>
+							<td class="table_border">@Html.DisplayFor(modelItem => item.student1.name)</td>
+						</tr>
+						<tr>
+							<td class="table_border" style="width:5%;">3</td>
+							<td class="table_border">@Html.DisplayFor(modelItem => item.student2.Id)</td>
+							<td class="table_border">@Html.DisplayFor(modelItem => item.student2.name)</td>
+						</tr>
+						<tr>
+							<td class="table_border" style="width:5%;">4</td>
+							<td class="table_border">@Html.DisplayFor(modelItem => item.student3.Id)</td>
+							<td class="table_border">@Html.DisplayFor(modelItem => item.student3.name)</td>
+						</tr>
+						<tr>
+							<td class="table_border" style="width:5%;">5</td>
+							<td class="table_border">@Html.DisplayFor(modelItem => item.student4.Id)</td>
+							<td class="table_border">@Html.DisplayFor(modelItem => item.student4.name)</td>
+						</tr>
+						<tr>
+							<td class="table_border" style="width:5%;">6</td>
+							<td class="table_border">@Html.DisplayFor(modelItem => item.student5.Id)</td>
+							<td class="table_border">@Html.DisplayFor(modelItem => item.student5.name)</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		}
+	</div>
+	}
+
+</div>
+<br />
+<div style="width: 95%; padding-top: 15px; padding-bottom: 10px; margin-left: 2%;">
+	<a href="@Url.Action("adminDashboard","Home")" class="btn btn-warning">
+		<i class="fas fa-arrow-circle-left"></i>
+		Back
+	</a>
+</div>
+
+
+<script>
+	//SEARCH NESTED TABLES , SCRIPT
+	function myFunction() {
+		var input, filter, table, tr, td, i, alltables;
+		alltables = document.querySelectorAll("table[data-name=mytable]");
+		input = document.getElementById("myInput");
+		filter = input.value.toUpperCase();
+		alltables.forEach(function (table) // loop on tables
+		{
+			tr = table.getElementsByTagName("tr"); // get all table rows for each table
+			flag = false;
+			for (i = 0; i < tr.length; i++) // loop on table rows
+			{
+				td = tr[i].getElementsByTagName("td")[1];
+				if (td) {
+					if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+						flag = true;
+					}
+				}
+			}
+
+			if (!flag)
+				table.style.display = "none";
+			else
+				table.style.display = "";
+
+
+		});
+	}
+</script>
+
+
+@*  ----------------  searech by course name  ---------------- *@
+<script>
+	//SEARCH NESTED TABLES , SCRIPT
+	function myFunction2() {
+		var input, filter, table, tr, td, i, alltables;
+		alltables = document.querySelectorAll("table[data-name=mytable]");
+		input = document.getElementById("myInput2");
+		filter = $("#myInput2 option:selected").text().toUpperCase();
+
+
+		//document.getElementById("res").innerHTML = filter;
+		alltables.forEach(function (table) // loop on tables
+		{
+			tr = table.getElementsByTagName("tr")[1]; // get the row that have the course name
+			flag = false;
+
+			td = tr.getElementsByTagName("td")[3];
+			if (td) {
+
+				if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+					flag = true;
+				}
+			}
+
+
+			if (!flag) {
+
+				table.style.display = "none";
+
+			}
+			else {
+
+				table.style.display = "";
+
+			}
+			if (filter == "COURSES")
+				table.style.display = "";
+
+
+		});
+	}
+</script>
+

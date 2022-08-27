@@ -1,0 +1,100 @@
+﻿@model IEnumerable<CTO_Portal.Models.group>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdminDashboard.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.cours.name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.day.name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.department.name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.hospital.name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.shift.name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.student.name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.student1.name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.student2.name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.student3.name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.student4.name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.student5.name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.trainer.name)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.cours.name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.day.name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.department.name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.hospital.name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.shift.name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.student.name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.student1.name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.student2.name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.student3.name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.student4.name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.student5.name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.trainer.name)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>

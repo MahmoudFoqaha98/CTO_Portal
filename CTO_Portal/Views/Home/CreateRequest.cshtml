@@ -1,0 +1,170 @@
+﻿
+@model CTO_Portal.Models.temp_requests
+@{
+	ViewBag.Title = "Create Request";
+	//Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@Scripts.Render("~/bundles/popper")
+
+<h1 style="color: #FFFFFF;text-shadow: 0 1px 0 #CCCCCC, 0 2px 0 #c9c9c9, 0 3px 0 #bbb, 0 4px 0 #b9b9b9, 0 5px 0 #aaa, 0 6px 1px rgba(0,0,0,.1), 0 0 5px rgba(0,0,0,.1), 0 1px 3px rgba(0,0,0,.3), 0 3px 5px rgba(0,0,0,.2), 0 5px 10px rgba(0,0,0,.25), 0 10px 10px rgba(0,0,0,.2), 0 20px 20px rgba(0,0,0,.15);color: #FFFFFF;">
+	Transfer new request
+</h1>
+
+@if (ViewBag.RequestPeriod == true)
+{
+	<div style="float:left">
+		<h5>Please fill the blank fields with information of your colleagues in the training</h5>
+	</div>
+}
+else
+{
+	<div class="alert alert-danger" role="alert">
+		<p style="text-align:center">
+			The request period is closed, Contact the office for more information.
+		</p>
+	</div>
+}
+
+<div style="float:right;margin-bottom:2%;">
+	<a href="/Home/ViewSentRequestStatus" class="btn btn-primary btn-round-lg btn-lg" style="font-size:1rem;">
+		<i class="fas fa-at"></i>
+		View sent request email status
+	</a>
+</div>
+
+
+@using (Html.BeginForm())
+{
+	@Html.AntiForgeryToken()
+	if (ViewBag.RequestPeriod == true)
+	{
+		<table class="table">
+			<thead @*class="thead-dark"*@ style="background-color: #324960;color:white;">
+				<tr>
+					<th scope="col" class="table_border">ID</th>
+					<th scope="col" class="table_border">Course</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="table_border">
+						<div class="input-group" style="width: 100%;">
+							<div class="input-group-prepend">
+								<span class="input-group-text" id="basic-addon1">@Html.DisplayNameFor(model => model.stidentIdOne)</span>
+
+							</div>
+							@Html.EditorFor(model => model.stidentIdOne, new { htmlAttributes = new { @class = "form-control", @Value = @Session["id"], @readonly = "readonly" } })
+
+						</div>
+						@Html.ValidationMessageFor(model => model.stidentIdOne, "", new { @class = "text-danger" })
+					</td>
+					<td class="table_border">
+						<div class="btn-group" style="width:100%;">
+							@Html.DropDownList("courseId", null, "Please select your Course", htmlAttributes: new { @class = "form-control" })
+						</div>
+						@Html.ValidationMessageFor(model => model.courseId, "", new { @class = "text-danger" })
+					</td>
+				</tr>
+				<tr>
+					<td class="table_border" width="400px">
+
+						<div class="input-group" style="width: 100%;">
+							<div class="input-group-prepend">
+								<span class="input-group-text" id="basic-addon1">@Html.DisplayNameFor(model => model.studentIdTwo)</span>
+							</div>
+							@Html.EditorFor(model => model.studentIdTwo, new { htmlAttributes = new { @class = "form-control", @placeholder = "University ID" } })
+
+						</div>
+						@Html.ValidationMessageFor(model => model.studentIdTwo, "", new { @class = "text-danger" })
+
+					</td>
+					<td scope="col" class="table_border" style="background-color: #324960;color:white;">Note</td>
+
+				</tr>
+				<tr>
+					<td class="table_border" width="400px">
+
+						<div class="input-group" style="width: 100%;">
+							<div class="input-group-prepend">
+								<span class="input-group-text" id="basic-addon1">@Html.DisplayNameFor(model => model.studentIdThree)</span>
+							</div>
+
+							@Html.EditorFor(model => model.studentIdThree, new { htmlAttributes = new { @class = "form-control", @placeholder = "University ID" } })
+
+						</div>
+						@Html.ValidationMessageFor(model => model.studentIdThree, "", new { @class = "text-danger" })
+					</td>
+					<td rowspan="4" class="table_border">
+						@Html.TextAreaFor(model => model.note, new { @class = "form-control", @rows = "9", @placeholder = "Please write any additional notes here  ..." })
+						@Html.ValidationMessageFor(model => model.note, "", new { @class = "text-danger" })
+					</td>
+				</tr>
+				<tr>
+					<td class="table_border" width="400px">
+
+						<div class="input-group" style="width: 100%;">
+							<div class="input-group-prepend">
+								<span class="input-group-text" id="basic-addon1">@Html.DisplayNameFor(model => model.studentIdFour)</span>
+							</div>
+
+							@Html.EditorFor(model => model.studentIdFour, new { htmlAttributes = new { @class = "form-control", @placeholder = "University ID" } })
+
+						</div>
+						@Html.ValidationMessageFor(model => model.studentIdFour, "", new { @class = "text-danger" })
+					</td>
+				</tr>
+				<tr>
+					<td class="table_border" width="400px">
+
+						<div class="input-group" style="width: 100%;">
+							<div class="input-group-prepend">
+								<span class="input-group-text" id="basic-addon1">@Html.DisplayNameFor(model => model.studendIdFive)</span>
+							</div>
+
+							@Html.EditorFor(model => model.studendIdFive, new { htmlAttributes = new { @class = "form-control", @placeholder = "University ID" } })
+
+						</div>
+						@Html.ValidationMessageFor(model => model.studendIdFive, "", new { @class = "text-danger" })
+					</td>
+
+				</tr>
+				<tr>
+					<td class="table_border" width="400px">
+
+						<div class="input-group" style="width: 100%;">
+							<div class="input-group-prepend">
+								<span class="input-group-text" id="basic-addon1">@Html.DisplayNameFor(model => model.studentIdSix)</span>
+							</div>
+
+							@Html.EditorFor(model => model.studentIdSix, new { htmlAttributes = new { @class = "form-control", @placeholder = "University ID" } })
+
+						</div>
+						@Html.ValidationMessageFor(model => model.studentIdSix, "", new { @class = "text-danger" })
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	}
+	<div style="float:right">
+		<a href="/Home/Index" class="btn btn-warning btn-round-lg btn-lg">
+			<i class="fas fa-arrow-circle-left"></i>
+			Back
+		</a>
+		&nbsp;&nbsp;
+		@if (ViewBag.RequestPeriod == true)
+		{
+
+			<button type="submit" class="btn btn-primary btn-round-lg btn-lg">
+				<i class="far fa-paper-plane"></i>
+				&nbsp;
+				Send Request
+			</button>
+		}
+	</div>
+
+}
+
+
+
+

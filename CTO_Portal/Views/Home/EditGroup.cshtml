@@ -1,0 +1,320 @@
+﻿@model CTO_Portal.Models.group
+
+@{
+	ViewBag.Title = "EditGroup";
+	Layout = "~/Views/Shared/_LayoutAdminDashboard.cshtml";
+}
+<div style="width: 95%; padding-top: 15px; padding-bottom: 10px; margin-left: 2%;">
+	<h1 style="color: #FFFFFF;text-shadow: 0 1px 0 #CCCCCC, 0 2px 0 #c9c9c9, 0 3px 0 #bbb, 0 4px 0 #b9b9b9, 0 5px 0 #aaa, 0 6px 1px rgba(0,0,0,.1), 0 0 5px rgba(0,0,0,.1), 0 1px 3px rgba(0,0,0,.3), 0 3px 5px rgba(0,0,0,.2), 0 5px 10px rgba(0,0,0,.25), 0 10px 10px rgba(0,0,0,.2), 0 20px 20px rgba(0,0,0,.15);color: #FFFFFF;">
+		Edit Group
+	</h1>
+	<div class="table-wrapper" style="width: 95%; background-color: white; padding-top: 15px; padding-bottom: 10px; margin-left: 2%">
+		@using (Html.BeginForm())
+		{
+			@Html.AntiForgeryToken()
+
+			@Html.HiddenFor(model => model.flag, new { Value = @ViewBag.flagEdit })
+
+			CTO_Portal.Models.group temp = (CTO_Portal.Models.group)Session["group"];
+
+			@Html.HiddenFor(model => model.oldHospitalId, new { Value = temp.hospitalId })
+
+			@Html.HiddenFor(model => model.oldDepartmentId, new { Value = temp.departmentId })
+
+			@Html.HiddenFor(model => model.oldDayId, new { Value = temp.dayId })
+
+			@Html.HiddenFor(model => model.oldShiftId, new { Value = temp.shiftId })
+
+			@Html.HiddenFor(model => model.oldTrainerId, new { Value = temp.trainerId })
+
+			@Html.HiddenFor(model => model.courseId, new { Value = temp.courseId })
+
+			<div class="table-wrapper" style="margin: 10px 70px 20px;">
+				<table id="myTable" class="fl-table">
+					<tr>
+						<td>
+							<table id="myTable" class="fl-table" style="border: 2px solid #324960">
+								<thead>
+									<tr>
+										<th style="width:4%;">#</th>
+										<th style="width:12%;">Students ID</th>
+										<th style="width:22%;">Student Name</th>
+										<th>Course</th>
+										<th>Hospital</th>
+										<th style="width:10%;">Day</th>
+										<th>Trainer</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td class="table_border" style="width:4%;">1</td>
+										<td class="table_border" style="width:12%;">
+											@Html.EditorFor(model => model.studentIdOne, new { htmlAttributes = new { @class = "form-control", @onkeyup = "myFunction()", @id = "studentNum", @maxlength = 9 } })
+											<br />
+											@Html.ValidationMessageFor(model => model.studentIdOne, "", new { @class = "text-danger" })
+										</td>
+										<td class="table_border" style="width:22%;">
+											<label id="studentName">
+												@if (temp.student != null)
+												{
+													@temp.student.name;
+												}
+
+											</label>
+										</td>
+										<td rowspan="6" class="table_border">
+											@Html.DropDownList("courseId", null, "Courses", htmlAttributes: new { @class = "form-control", @id = "selectpicker", @disabled = "disabled" })
+											<br />
+											@Html.ValidationMessageFor(model => model.courseId, "", new { @class = "text-danger" })
+										</td>
+										<td rowspan="3" class="table_border">
+											@Html.DropDownList("hospitalId", null, "Hospitals", htmlAttributes: new { @class = "form-control", @id = "selectpicker1" })
+											<br />
+											@Html.ValidationMessageFor(model => model.hospitalId, "", new { @class = "text-danger" })
+										</td>
+										<td rowspan="3" class="table_border" style="width:10%;">
+											@Html.DropDownList("dayId", null, "Days", htmlAttributes: new { @class = "form-control", @id = "selectpicker3" })
+											<br />
+											@Html.ValidationMessageFor(model => model.dayId, "", new { @class = "text-danger" })
+										</td>
+										<td rowspan="6" class="table_border">
+											@Html.DropDownList("trainerId", null, "Trainers", htmlAttributes: new { @class = "form-control", @id = "selectpicker5" })
+											<br />
+											@Html.ValidationMessageFor(model => model.trainerId, "", new { @class = "text-danger" })
+										</td>
+									</tr>
+									<tr>
+										<td class="table_border" style="width:4%;">2</td>
+										<td class="table_border" style="width:12%;">
+											@Html.EditorFor(model => model.studentIdTwo, new { htmlAttributes = new { @class = "form-control", @onkeyup = "myFunction2()", @id = "studentNum2" } })
+											<br />
+											@Html.ValidationMessageFor(model => model.studentIdTwo, "", new { @class = "text-danger" })
+										</td>
+										<td class="table_border" style="width:22%;"> 
+											<label id="studentName2">
+
+												@if (temp.student1 != null)
+												{
+													@temp.student1.name;
+												}
+											</label>
+										</td>
+									</tr>
+									<tr>
+										<td class="table_border" style="width:4%;">3</td>
+										<td class="table_border" style="width:12%;">
+											@Html.EditorFor(model => model.studentIdThree, new { htmlAttributes = new { @class = "form-control", @onkeyup = "myFunction3()", @id = "studentNum3" } })
+											<br />
+											@Html.ValidationMessageFor(model => model.studentIdThree, "", new { @class = "text-danger" })
+										</td>
+										<td class="table_border" style="width:22%;">
+											<label id="studentName3">
+												@if (temp.student2 != null)
+												{
+													@temp.student2.name;
+												}
+											</label>
+
+										</td>
+									</tr>
+									<tr style=" height:50% ">
+										<td class="table_border" style="width:4%;">4</td>
+										<td class="table_border" style="width:12%;">
+											@Html.EditorFor(model => model.studentIdFour, new { htmlAttributes = new { @class = "form-control", @onkeyup = "myFunction4()", @id = "studentNum4" } })
+											<br />
+											@Html.ValidationMessageFor(model => model.studentIdFour, "", new { @class = "text-danger" })
+										</td>
+										<td class="table_border" style="width:22%;">
+											<label id="studentName4">
+												@if (temp.student3 != null)
+												{
+													@temp.student3.name;
+												}
+											</label>
+
+										</td>
+
+										<td rowspan="3" class="table_border">
+											@Html.DropDownList("departmentId", null, "Departments", htmlAttributes: new { @class = "form-control", @id = "selectpicker2" })
+											<br />
+											@Html.ValidationMessageFor(model => model.departmentId, "", new { @class = "text-danger" })
+										</td>
+
+										<td rowspan="3" class="table_border" style="width:10%;">
+
+											@Html.DropDownList("shiftId", null, "Shifts", htmlAttributes: new { @class = "form-control", @id = "selectpicker4" })
+											<br />
+											@Html.ValidationMessageFor(model => model.shiftId, "", new { @class = "text-danger" })
+										</td>
+
+									</tr>
+									<tr>
+										<td class="table_border" style="width:4%;">5</td>
+										<td class="table_border" style="width:12%;">
+											@Html.EditorFor(model => model.studentIdFive, new { htmlAttributes = new { @class = "form-control", @onkeyup = "myFunction5()", @id = "studentNum5" } })
+											<br />
+											@Html.ValidationMessageFor(model => model.studentIdFive, "", new { @class = "text-danger" })
+										</td>
+										<td class="table_border" style="width:22%;">
+											<label id="studentName5">
+												@if (temp.student4 != null)
+												{
+													@temp.student4.name;
+												}
+											</label>
+
+										</td>
+									</tr>
+									<tr>
+										<td class="table_border" style="width:4%;">6</td>
+										<td class="table_border" style="width:12%;">
+											@Html.EditorFor(model => model.studentIdSix, new { htmlAttributes = new { @class = "form-control", @onkeyup = "myFunction6()", @id = "studentNum6" } })
+											<br />
+											@Html.ValidationMessageFor(model => model.studentIdSix, "", new { @class = "text-danger" })
+										</td>
+										<td class="table_border" style="width:22%;">
+											<label id="studentName6">
+												@if (temp.student5 != null)
+												{
+													@temp.student5.name;
+												}
+											</label>
+
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</td>
+					</tr>
+
+					<tr>
+						<td>
+							<button type="submit" class="btn btn-primary">
+								<img src="/Content/images/icon_save.png" class="nv-icons2">
+								Save
+							</button>
+						</td>
+					</tr>
+				</table>
+			</div>
+
+			@Html.DropDownList("studentIdOne", null, htmlAttributes: new { @id = "myDropdown", @class = "form-control", @hidden = "hidden" })
+
+		}
+	</div>
+
+	<br />
+	<div style="width: 95%; padding-top: 15px; padding-bottom: 10px; margin-left: 2%;">
+		<a href="@Url.Action("Groups","Home")" class="btn btn-warning">
+			<i class="fas fa-arrow-circle-left"></i>
+			Back
+		</a>
+	</div>
+</div>
+
+<script>
+	var x = document.getElementById("myDropdown");
+	var dict = {};
+	for (i = 0; i < x.length; i++) {
+		dict[x.options[i].value] = x.options[i].text;
+	}
+</script>
+
+
+<script>
+	function myFunction() {
+		var id = document.getElementById("studentNum").value;
+
+		if (dict[id] != undefined)
+			document.getElementById("studentName").innerHTML = dict[id];
+		else
+			document.getElementById("studentName").innerHTML = "";
+
+	}
+
+	myFunction();
+</script>
+
+
+
+<script>
+	function myFunction2() {
+		var id = document.getElementById("studentNum2").value;
+
+		if (dict[id] != undefined)
+			document.getElementById("studentName2").innerHTML = dict[id];
+		else
+			document.getElementById("studentName2").innerHTML = "";
+
+	}
+	myFunction2();
+</script>
+
+<script>
+	function myFunction3() {
+		var id = document.getElementById("studentNum3").value;
+
+		if (dict[id] != undefined)
+			document.getElementById("studentName3").innerHTML = dict[id];
+		else
+			document.getElementById("studentName3").innerHTML = "";
+
+	}
+	myFunction3();
+</script>
+
+<script>
+	function myFunction4() {
+		var id = document.getElementById("studentNum4").value;
+
+		if (dict[id] != undefined)
+			document.getElementById("studentName4").innerHTML = dict[id];
+		else
+			document.getElementById("studentName4").innerHTML = "";
+
+	}
+	myFunction4();
+</script>
+
+<script>
+	function myFunction5() {
+		var id = document.getElementById("studentNum5").value;
+
+		if (dict[id] != undefined)
+			document.getElementById("studentName5").innerHTML = dict[id];
+		else
+			document.getElementById("studentName5").innerHTML = "";
+
+	}
+	myFunction5();
+</script>
+
+<script>
+	function myFunction6() {
+		var id = document.getElementById("studentNum6").value;
+
+		if (dict[id] != undefined)
+			document.getElementById("studentName6").innerHTML = dict[id];
+		else
+			document.getElementById("studentName6").innerHTML = "";
+
+	}
+	myFunction6();
+</script>
+
+<script src="~/Scripts/chosen.jquery.js"></script>
+<link href="~/Content/bootstrap-chosen.css" rel="stylesheet" />
+<script>
+	$(function () {
+		$('#selectpicker').chosen();
+		$('#selectpicker1').chosen();
+		$('#selectpicker2').chosen();
+		$('#selectpicker3').chosen({ disable_search_threshold: 10 });
+		$('#selectpicker4').chosen({ disable_search_threshold: 10 });
+		$('#selectpicker5').chosen();
+
+
+	}
+	);
+
+</script>

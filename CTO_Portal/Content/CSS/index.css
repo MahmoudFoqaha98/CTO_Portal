@@ -1,0 +1,9 @@
+﻿.my-primary {
+	color: black;
+	background-color: white;
+	height: 24em;
+	width: 18em;
+	/*border-radius: unset;*/
+	border-radius:inherit;
+	border:none;
+}

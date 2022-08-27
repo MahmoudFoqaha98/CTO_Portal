@@ -1,0 +1,41 @@
+﻿@{
+	ViewBag.Title = "Login";
+	Layout = null;
+}
+<head>
+	@Styles.Render("~/loginStyle")
+	<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+</head>
+<div class="wrapper fadeInDown">
+	<div id="formContent" style="">
+		<!-- Tabs Titles -->
+		<!-- Icon -->
+		<div class="fadeIn first">
+			<img class="img-fluid" src="~/Content/images/login.jpeg" id="icon" alt="User Icon" width="400" height="240" />
+			<h1 class="container text-center p-1 w-auto">Clinical Training Office Portal</h1>
+			@*<br /><br /><br /><br /><br /><br /><br />*@
+		</div>
+
+		<!-- Login Form -->
+		@using (Html.BeginForm())
+		{
+			<input type="text" id="login" class="fadeIn second" name="username" placeholder="USERNAME">
+			<input type="password" id="password" class="fadeIn third" name="password" placeholder="PASSWORD">
+			<button type="submit" class="fadeIn fourth">
+				<i class="fas fa-sign-in-alt fa-lg"> &nbsp; Log In</i>
+
+			</button>
+		}
+		<p style="color:red;">@ViewBag.Error</p>
+
+
+			@*<br /><br /><br />*@
+			<!-- Remind Passowrd -->
+			@*<div id="formFooter">
+				<a class="underlineHover" href="/Home/Index">Go to the Site</a>
+			</div>*@
+
+	</div>
+</div>
+

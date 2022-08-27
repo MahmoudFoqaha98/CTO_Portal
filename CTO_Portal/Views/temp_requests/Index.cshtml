@@ -1,0 +1,168 @@
+﻿@model IEnumerable<CTO_Portal.Models.temp_requests>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link href="~/Content/CSS/tablesStyle.css" rel="stylesheet" />
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<div class="table-wrapper">
+	<table class="fl-table">
+		<thead>
+			<tr>
+				<th>
+					@Html.DisplayNameFor(model => model.note)
+				</th>
+				<th>
+					@Html.DisplayNameFor(model => model.cours.name)
+				</th>
+				<th>
+					@Html.DisplayNameFor(model => model.student.name)
+				</th>
+				<th>
+					@Html.DisplayNameFor(model => model.student1.name)
+				</th>
+				<th>
+					@Html.DisplayNameFor(model => model.student2.name)
+				</th>
+				<th>
+					@Html.DisplayNameFor(model => model.student3.name)
+				</th>
+				<th>
+					@Html.DisplayNameFor(model => model.student4.name)
+				</th>
+				<th>
+					@Html.DisplayNameFor(model => model.student5.name)
+				</th>
+				<th></th>
+			</tr>
+		</thead>
+
+		<tbody>
+			@foreach (var item in Model)
+			{
+				<tr>
+					<td>
+						@Html.DisplayFor(modelItem => item.note)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.cours.name)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.student.name)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.student1.name)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.student2.name)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.student3.name)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.student4.name)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.student5.name)
+					</td>
+					<td>
+						@Html.ActionLink("Edit", "Edit", new { id = item.id }) |
+						@Html.ActionLink("Details", "Details", new { id = item.id }) |
+						@Html.ActionLink("Delete", "Delete", new { id = item.id })
+					</td>
+				</tr>
+			}
+		</tbody>
+	</table>
+</div>
+
+<div class="table-wrapper">
+	<table class="fl-table">
+		<thead>
+			<tr>
+				<th>Header 1</th>
+				<th>Header 2</th>
+				<th>Header 3</th>
+				<th>Header 4</th>
+				<th>Header 5</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>Content 1</td>
+				<td>Content 1</td>
+				<td>Content 1</td>
+				<td>Content 1</td>
+				<td>Content 1</td>
+			</tr>
+			<tr>
+				<td>Content 2</td>
+				<td>Content 2</td>
+				<td>Content 2</td>
+				<td>Content 2</td>
+				<td>Content 2</td>
+			</tr>
+			<tr>
+				<td>Content 3</td>
+				<td>Content 3</td>
+				<td>Content 3</td>
+				<td>Content 3</td>
+				<td>Content 3</td>
+			</tr>
+			<tr>
+				<td>Content 4</td>
+				<td>Content 4</td>
+				<td>Content 4</td>
+				<td>Content 4</td>
+				<td>Content 4</td>
+			</tr>
+			<tr>
+				<td>Content 5</td>
+				<td>Content 5</td>
+				<td>Content 5</td>
+				<td>Content 5</td>
+				<td>Content 5</td>
+			</tr>
+			<tr>
+				<td>Content 6</td>
+				<td>Content 6</td>
+				<td>Content 6</td>
+				<td>Content 6</td>
+				<td>Content 6</td>
+			</tr>
+			<tr>
+				<td>Content 7</td>
+				<td>Content 7</td>
+				<td>Content 7</td>
+				<td>Content 7</td>
+				<td>Content 7</td>
+			</tr>
+			<tr>
+				<td>Content 8</td>
+				<td>Content 8</td>
+				<td>Content 8</td>
+				<td>Content 8</td>
+				<td>Content 8</td>
+			</tr>
+			<tr>
+				<td>Content 9</td>
+				<td>Content 9</td>
+				<td>Content 9</td>
+				<td>Content 9</td>
+				<td>Content 9</td>
+			</tr>
+			<tr>
+				<td>Content 10</td>
+				<td>Content 10</td>
+				<td>Content 10</td>
+				<td>Content 10</td>
+				<td>Content 10</td>
+			</tr>
+		<tbody>
+	</table>
+</div>

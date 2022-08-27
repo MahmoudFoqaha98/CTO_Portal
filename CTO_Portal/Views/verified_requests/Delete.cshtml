@@ -1,0 +1,105 @@
+﻿@model CTO_Portal.Models.verified_requests
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_LayoutAdminDashboard.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>verified_requests</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.note)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.note)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.approved)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.approved)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cours.name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cours.name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.student.name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.student.name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.student1.name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.student1.name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.student2.name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.student2.name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.student3.name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.student3.name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.student4.name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.student4.name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.student5.name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.student5.name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.temp_requests.note)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.temp_requests.note)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

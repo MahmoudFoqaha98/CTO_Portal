@@ -1,0 +1,39 @@
+﻿
+@{
+    ViewBag.Title = "VerifyAccount";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div>
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	@if (ViewBag.Status == true)
+	{
+		<div class="alert alert-success" role="alert">
+			<p style="text-align:center">
+				Thank You, You have agreed for the group request, The clinical training
+				office will consider your request, Please be patient.
+			</p>
+		</div>
+	}
+	else
+	{
+		<div class="alert alert-danger" role="alert">
+			<p style="text-align:center">
+				You or other students in this request has already agreed for a request for this course.
+			</p>
+		</div>
+	}
+	<br /><br /><br />
+</div>
+
+

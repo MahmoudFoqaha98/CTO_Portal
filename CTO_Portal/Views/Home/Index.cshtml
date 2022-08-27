@@ -1,0 +1,66 @@
+﻿@{
+	ViewBag.Title = "Main Menu";
+}
+<head>
+	@Styles.Render("~/indexStyle")
+	<style>
+
+		.button__badge {
+			background-color: #fa3e3e;
+			border-radius: 2px;
+			color: white;
+			padding: 1px 3px;
+			font-size: 10px;
+			position: absolute; /* Position the badge within the relatively positioned button */
+			right: 0;
+		}
+
+		.badge {
+			position: absolute;
+			top: -20px;
+			left: 145px;
+			padding: 6% 7%;
+			font-size: 18px;
+			border-radius: 50%;
+			background: red;
+			color: white;
+		}
+	</style>
+
+</head>
+<div class="container text-center p-4">
+	<h2>Clinical Training Office Portal</h2>
+</div>
+<div class="container text-center">
+	<a href="/Home/ViewTrainingGroups" class="btn btn-primary my-primary">
+		<br /><br /><br /><br />
+		<span style="font-size: 1.5rem; font-weight: 700;">View Training Group</span>
+		<br /><br />
+		<span>
+			<img src="~/Content/images/search.png" alt="Image not found" title=" View Training Group" />
+		</span>
+	</a>
+	&nbsp;&nbsp;&nbsp;
+	<a href="/Home/CreateRequest" class="btn btn-primary my-primary">
+		<br /><br /><br /><br />
+		<span style="font-size: 1.5rem; font-weight: 700;">Request Transfer</span>
+		<br /><br /><br />
+		<span>
+			<img src="~/Content/images/request.png" alt="Image not found" title=" View Training Group" style="width:6em;height:6em;" />
+		</span>
+	</a>
+	&nbsp;&nbsp;&nbsp;
+
+	<a href="/Home/StudentChat" class="btn btn-primary my-primary">
+		<span class="badge bg-danger badge-dot" style="top:-20px">
+			@{ Html.RenderAction("_ChatStudentCount", "Home"); }
+		</span>
+		<br /><br /><br />
+
+		<span style="font-size: 1.5rem; font-weight: 700;">Chat with the Office</span>
+		<br /><br /><br />
+		<span>
+			<img src="~/Content/images/chat.png" alt="Image not found" title=" View Training Group" style="width:6em;height:6em;" />
+		</span>
+	</a>
+</div>

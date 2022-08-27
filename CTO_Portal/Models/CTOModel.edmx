@@ -1,0 +1,1982 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="CTOModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="admins">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="email" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="password" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="chats">
+          <Key>
+            <PropertyRef Name="chatId" />
+          </Key>
+          <Property Name="chatId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="senderId" Type="bigint" Nullable="false" />
+          <Property Name="receiverId" Type="bigint" Nullable="false" />
+          <Property Name="message" Type="nvarchar" MaxLength="4000" Nullable="false" />
+          <Property Name="date" Type="datetime" Nullable="false" />
+          <Property Name="status" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="courses">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="days">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="deleted_groups">
+          <Key>
+            <PropertyRef Name="hospitalId" />
+            <PropertyRef Name="departmentId" />
+            <PropertyRef Name="dayId" />
+            <PropertyRef Name="shiftId" />
+          </Key>
+          <Property Name="courseId" Type="int" Nullable="false" />
+          <Property Name="hospitalId" Type="int" Nullable="false" />
+          <Property Name="departmentId" Type="int" Nullable="false" />
+          <Property Name="dayId" Type="int" Nullable="false" />
+          <Property Name="shiftId" Type="int" Nullable="false" />
+          <Property Name="trainerId" Type="int" Nullable="false" />
+          <Property Name="studentIdOne" Type="bigint" Nullable="false" />
+          <Property Name="studentIdTwo" Type="bigint" Nullable="false" />
+          <Property Name="studentIdThree" Type="bigint" />
+          <Property Name="studentIdFour" Type="bigint" />
+          <Property Name="studentIdFive" Type="bigint" />
+          <Property Name="studentIdSix" Type="bigint" />
+        </EntityType>
+        <EntityType Name="departments">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="email-status">
+          <Key>
+            <PropertyRef Name="requestId" />
+            <PropertyRef Name="studentId" />
+          </Key>
+          <Property Name="requestId" Type="int" Nullable="false" />
+          <Property Name="studentId" Type="bigint" Nullable="false" />
+          <Property Name="status" Type="bit" Nullable="false" />
+          <Property Name="activationCode" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <EntityType Name="groups">
+          <Key>
+            <PropertyRef Name="hospitalId" />
+            <PropertyRef Name="departmentId" />
+            <PropertyRef Name="dayId" />
+            <PropertyRef Name="shiftId" />
+          </Key>
+          <Property Name="courseId" Type="int" Nullable="false" />
+          <Property Name="hospitalId" Type="int" Nullable="false" />
+          <Property Name="departmentId" Type="int" Nullable="false" />
+          <Property Name="dayId" Type="int" Nullable="false" />
+          <Property Name="shiftId" Type="int" Nullable="false" />
+          <Property Name="trainerId" Type="int" Nullable="false" />
+          <Property Name="studentIdOne" Type="bigint" Nullable="false" />
+          <Property Name="studentIdTwo" Type="bigint" Nullable="false" />
+          <Property Name="studentIdThree" Type="bigint" />
+          <Property Name="studentIdFour" Type="bigint" />
+          <Property Name="studentIdFive" Type="bigint" />
+          <Property Name="studentIdSix" Type="bigint" />
+        </EntityType>
+        <EntityType Name="hospitals">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="request_period">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="status" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="shifts">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="students">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="email" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="password" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="temp_requests">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="stidentIdOne" Type="bigint" Nullable="false" />
+          <Property Name="studentIdTwo" Type="bigint" Nullable="false" />
+          <Property Name="studentIdThree" Type="bigint" />
+          <Property Name="studentIdFour" Type="bigint" />
+          <Property Name="studendIdFive" Type="bigint" />
+          <Property Name="studentIdSix" Type="bigint" />
+          <Property Name="courseId" Type="int" Nullable="false" />
+          <Property Name="note" Type="nvarchar" MaxLength="300" />
+        </EntityType>
+        <EntityType Name="trainers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="verified_requests">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="studentIdOne" Type="bigint" Nullable="false" />
+          <Property Name="studentIdTwo" Type="bigint" Nullable="false" />
+          <Property Name="studentIdThree" Type="bigint" />
+          <Property Name="studentIdFour" Type="bigint" />
+          <Property Name="studentIdFive" Type="bigint" />
+          <Property Name="studentIdSix" Type="bigint" />
+          <Property Name="courseId" Type="int" Nullable="false" />
+          <Property Name="note" Type="nvarchar" MaxLength="300" />
+          <Property Name="approved" Type="bit" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_deleted_groups_courses">
+          <End Role="courses" Type="Self.courses" Multiplicity="1" />
+          <End Role="deleted_groups" Type="Self.deleted_groups" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="courses">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="deleted_groups">
+              <PropertyRef Name="courseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_deleted_groups_days">
+          <End Role="days" Type="Self.days" Multiplicity="1" />
+          <End Role="deleted_groups" Type="Self.deleted_groups" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="days">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="deleted_groups">
+              <PropertyRef Name="dayId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_deleted_groups_departments">
+          <End Role="departments" Type="Self.departments" Multiplicity="1" />
+          <End Role="deleted_groups" Type="Self.deleted_groups" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="departments">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="deleted_groups">
+              <PropertyRef Name="departmentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_deleted_groups_hospitals">
+          <End Role="hospitals" Type="Self.hospitals" Multiplicity="1" />
+          <End Role="deleted_groups" Type="Self.deleted_groups" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="hospitals">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="deleted_groups">
+              <PropertyRef Name="hospitalId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_deleted_groups_shifts">
+          <End Role="shifts" Type="Self.shifts" Multiplicity="1" />
+          <End Role="deleted_groups" Type="Self.deleted_groups" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="shifts">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="deleted_groups">
+              <PropertyRef Name="shiftId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_deleted_groups_students1">
+          <End Role="students" Type="Self.students" Multiplicity="1" />
+          <End Role="deleted_groups" Type="Self.deleted_groups" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="students">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="deleted_groups">
+              <PropertyRef Name="studentIdOne" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_deleted_groups_students2">
+          <End Role="students" Type="Self.students" Multiplicity="1" />
+          <End Role="deleted_groups" Type="Self.deleted_groups" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="students">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="deleted_groups">
+              <PropertyRef Name="studentIdTwo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_deleted_groups_students3">
+          <End Role="students" Type="Self.students" Multiplicity="0..1" />
+          <End Role="deleted_groups" Type="Self.deleted_groups" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="students">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="deleted_groups">
+              <PropertyRef Name="studentIdThree" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_deleted_groups_students4">
+          <End Role="students" Type="Self.students" Multiplicity="0..1" />
+          <End Role="deleted_groups" Type="Self.deleted_groups" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="students">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="deleted_groups">
+              <PropertyRef Name="studentIdFour" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_deleted_groups_students5">
+          <End Role="students" Type="Self.students" Multiplicity="0..1" />
+          <End Role="deleted_groups" Type="Self.deleted_groups" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="students">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="deleted_groups">
+              <PropertyRef Name="studentIdFive" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_deleted_groups_students6">
+          <End Role="students" Type="Self.students" Multiplicity="0..1" />
+          <End Role="deleted_groups" Type="Self.deleted_groups" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="students">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="deleted_groups">
+              <PropertyRef Name="studentIdSix" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_deleted_groups_trainers">
+          <End Role="trainers" Type="Self.trainers" Multiplicity="1" />
+          <End Role="deleted_groups" Type="Self.deleted_groups" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="trainers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="deleted_groups">
+              <PropertyRef Name="trainerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_email-status_students">
+          <End Role="students" Type="Self.students" Multiplicity="1" />
+          <End Role="email-status" Type="Self.email-status" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="students">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="email-status">
+              <PropertyRef Name="studentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_email-status_temp_requests">
+          <End Role="temp_requests" Type="Self.temp_requests" Multiplicity="1" />
+          <End Role="email-status" Type="Self.email-status" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="temp_requests">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="email-status">
+              <PropertyRef Name="requestId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_groups_courses">
+          <End Role="courses" Type="Self.courses" Multiplicity="1" />
+          <End Role="groups" Type="Self.groups" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="courses">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="groups">
+              <PropertyRef Name="courseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_groups_days">
+          <End Role="days" Type="Self.days" Multiplicity="1" />
+          <End Role="groups" Type="Self.groups" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="days">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="groups">
+              <PropertyRef Name="dayId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_groups_depatrments">
+          <End Role="departments" Type="Self.departments" Multiplicity="1" />
+          <End Role="groups" Type="Self.groups" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="departments">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="groups">
+              <PropertyRef Name="departmentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_groups_hospitals">
+          <End Role="hospitals" Type="Self.hospitals" Multiplicity="1" />
+          <End Role="groups" Type="Self.groups" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="hospitals">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="groups">
+              <PropertyRef Name="hospitalId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_groups_shifts">
+          <End Role="shifts" Type="Self.shifts" Multiplicity="1" />
+          <End Role="groups" Type="Self.groups" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="shifts">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="groups">
+              <PropertyRef Name="shiftId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_groups_students1">
+          <End Role="students" Type="Self.students" Multiplicity="1" />
+          <End Role="groups" Type="Self.groups" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="students">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="groups">
+              <PropertyRef Name="studentIdOne" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_groups_students2">
+          <End Role="students" Type="Self.students" Multiplicity="1" />
+          <End Role="groups" Type="Self.groups" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="students">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="groups">
+              <PropertyRef Name="studentIdTwo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_groups_students3">
+          <End Role="students" Type="Self.students" Multiplicity="0..1" />
+          <End Role="groups" Type="Self.groups" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="students">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="groups">
+              <PropertyRef Name="studentIdThree" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_groups_students4">
+          <End Role="students" Type="Self.students" Multiplicity="0..1" />
+          <End Role="groups" Type="Self.groups" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="students">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="groups">
+              <PropertyRef Name="studentIdFour" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_groups_students5">
+          <End Role="students" Type="Self.students" Multiplicity="0..1" />
+          <End Role="groups" Type="Self.groups" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="students">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="groups">
+              <PropertyRef Name="studentIdFive" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_groups_students6">
+          <End Role="students" Type="Self.students" Multiplicity="0..1" />
+          <End Role="groups" Type="Self.groups" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="students">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="groups">
+              <PropertyRef Name="studentIdSix" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_groups_trainers">
+          <End Role="trainers" Type="Self.trainers" Multiplicity="1" />
+          <End Role="groups" Type="Self.groups" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="trainers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="groups">
+              <PropertyRef Name="trainerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_temp_requests_courses">
+          <End Role="courses" Type="Self.courses" Multiplicity="1" />
+          <End Role="temp_requests" Type="Self.temp_requests" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="courses">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="temp_requests">
+              <PropertyRef Name="courseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_temp_requests_students_1">
+          <End Role="students" Type="Self.students" Multiplicity="1" />
+          <End Role="temp_requests" Type="Self.temp_requests" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="students">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="temp_requests">
+              <PropertyRef Name="stidentIdOne" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_temp_requests_students2">
+          <End Role="students" Type="Self.students" Multiplicity="1" />
+          <End Role="temp_requests" Type="Self.temp_requests" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="students">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="temp_requests">
+              <PropertyRef Name="studentIdTwo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_temp_requests_students3">
+          <End Role="students" Type="Self.students" Multiplicity="0..1" />
+          <End Role="temp_requests" Type="Self.temp_requests" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="students">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="temp_requests">
+              <PropertyRef Name="studentIdThree" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_temp_requests_students4">
+          <End Role="students" Type="Self.students" Multiplicity="0..1" />
+          <End Role="temp_requests" Type="Self.temp_requests" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="students">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="temp_requests">
+              <PropertyRef Name="studentIdFour" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_temp_requests_students5">
+          <End Role="students" Type="Self.students" Multiplicity="0..1" />
+          <End Role="temp_requests" Type="Self.temp_requests" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="students">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="temp_requests">
+              <PropertyRef Name="studendIdFive" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_temp_requests_students6">
+          <End Role="students" Type="Self.students" Multiplicity="0..1" />
+          <End Role="temp_requests" Type="Self.temp_requests" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="students">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="temp_requests">
+              <PropertyRef Name="studentIdSix" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_verified_requests_courses">
+          <End Role="courses" Type="Self.courses" Multiplicity="1" />
+          <End Role="verified_requests" Type="Self.verified_requests" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="courses">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="verified_requests">
+              <PropertyRef Name="courseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_verified_requests_students1">
+          <End Role="students" Type="Self.students" Multiplicity="1" />
+          <End Role="verified_requests" Type="Self.verified_requests" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="students">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="verified_requests">
+              <PropertyRef Name="studentIdOne" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_verified_requests_students2">
+          <End Role="students" Type="Self.students" Multiplicity="1" />
+          <End Role="verified_requests" Type="Self.verified_requests" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="students">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="verified_requests">
+              <PropertyRef Name="studentIdTwo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_verified_requests_students3">
+          <End Role="students" Type="Self.students" Multiplicity="0..1" />
+          <End Role="verified_requests" Type="Self.verified_requests" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="students">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="verified_requests">
+              <PropertyRef Name="studentIdThree" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_verified_requests_students4">
+          <End Role="students" Type="Self.students" Multiplicity="0..1" />
+          <End Role="verified_requests" Type="Self.verified_requests" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="students">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="verified_requests">
+              <PropertyRef Name="studentIdFour" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_verified_requests_students5">
+          <End Role="students" Type="Self.students" Multiplicity="0..1" />
+          <End Role="verified_requests" Type="Self.verified_requests" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="students">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="verified_requests">
+              <PropertyRef Name="studentIdFive" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_verified_requests_students6">
+          <End Role="students" Type="Self.students" Multiplicity="0..1" />
+          <End Role="verified_requests" Type="Self.verified_requests" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="students">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="verified_requests">
+              <PropertyRef Name="studentIdSix" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_verified_requests_temp_requests">
+          <End Role="temp_requests" Type="Self.temp_requests" Multiplicity="1" />
+          <End Role="verified_requests" Type="Self.verified_requests" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="temp_requests">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="verified_requests">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CTOModelStoreContainer">
+          <EntitySet Name="admins" EntityType="Self.admins" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="chats" EntityType="Self.chats" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="courses" EntityType="Self.courses" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="days" EntityType="Self.days" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="deleted_groups" EntityType="Self.deleted_groups" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="departments" EntityType="Self.departments" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="email-status" EntityType="Self.email-status" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="groups" EntityType="Self.groups" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="hospitals" EntityType="Self.hospitals" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="request_period" EntityType="Self.request_period" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="shifts" EntityType="Self.shifts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="students" EntityType="Self.students" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="temp_requests" EntityType="Self.temp_requests" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="trainers" EntityType="Self.trainers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="verified_requests" EntityType="Self.verified_requests" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_deleted_groups_courses" Association="Self.FK_deleted_groups_courses">
+            <End Role="courses" EntitySet="courses" />
+            <End Role="deleted_groups" EntitySet="deleted_groups" />
+          </AssociationSet>
+          <AssociationSet Name="FK_deleted_groups_days" Association="Self.FK_deleted_groups_days">
+            <End Role="days" EntitySet="days" />
+            <End Role="deleted_groups" EntitySet="deleted_groups" />
+          </AssociationSet>
+          <AssociationSet Name="FK_deleted_groups_departments" Association="Self.FK_deleted_groups_departments">
+            <End Role="departments" EntitySet="departments" />
+            <End Role="deleted_groups" EntitySet="deleted_groups" />
+          </AssociationSet>
+          <AssociationSet Name="FK_deleted_groups_hospitals" Association="Self.FK_deleted_groups_hospitals">
+            <End Role="hospitals" EntitySet="hospitals" />
+            <End Role="deleted_groups" EntitySet="deleted_groups" />
+          </AssociationSet>
+          <AssociationSet Name="FK_deleted_groups_shifts" Association="Self.FK_deleted_groups_shifts">
+            <End Role="shifts" EntitySet="shifts" />
+            <End Role="deleted_groups" EntitySet="deleted_groups" />
+          </AssociationSet>
+          <AssociationSet Name="FK_deleted_groups_students1" Association="Self.FK_deleted_groups_students1">
+            <End Role="students" EntitySet="students" />
+            <End Role="deleted_groups" EntitySet="deleted_groups" />
+          </AssociationSet>
+          <AssociationSet Name="FK_deleted_groups_students2" Association="Self.FK_deleted_groups_students2">
+            <End Role="students" EntitySet="students" />
+            <End Role="deleted_groups" EntitySet="deleted_groups" />
+          </AssociationSet>
+          <AssociationSet Name="FK_deleted_groups_students3" Association="Self.FK_deleted_groups_students3">
+            <End Role="students" EntitySet="students" />
+            <End Role="deleted_groups" EntitySet="deleted_groups" />
+          </AssociationSet>
+          <AssociationSet Name="FK_deleted_groups_students4" Association="Self.FK_deleted_groups_students4">
+            <End Role="students" EntitySet="students" />
+            <End Role="deleted_groups" EntitySet="deleted_groups" />
+          </AssociationSet>
+          <AssociationSet Name="FK_deleted_groups_students5" Association="Self.FK_deleted_groups_students5">
+            <End Role="students" EntitySet="students" />
+            <End Role="deleted_groups" EntitySet="deleted_groups" />
+          </AssociationSet>
+          <AssociationSet Name="FK_deleted_groups_students6" Association="Self.FK_deleted_groups_students6">
+            <End Role="students" EntitySet="students" />
+            <End Role="deleted_groups" EntitySet="deleted_groups" />
+          </AssociationSet>
+          <AssociationSet Name="FK_deleted_groups_trainers" Association="Self.FK_deleted_groups_trainers">
+            <End Role="trainers" EntitySet="trainers" />
+            <End Role="deleted_groups" EntitySet="deleted_groups" />
+          </AssociationSet>
+          <AssociationSet Name="FK_email-status_students" Association="Self.FK_email-status_students">
+            <End Role="students" EntitySet="students" />
+            <End Role="email-status" EntitySet="email-status" />
+          </AssociationSet>
+          <AssociationSet Name="FK_email-status_temp_requests" Association="Self.FK_email-status_temp_requests">
+            <End Role="temp_requests" EntitySet="temp_requests" />
+            <End Role="email-status" EntitySet="email-status" />
+          </AssociationSet>
+          <AssociationSet Name="FK_groups_courses" Association="Self.FK_groups_courses">
+            <End Role="courses" EntitySet="courses" />
+            <End Role="groups" EntitySet="groups" />
+          </AssociationSet>
+          <AssociationSet Name="FK_groups_days" Association="Self.FK_groups_days">
+            <End Role="days" EntitySet="days" />
+            <End Role="groups" EntitySet="groups" />
+          </AssociationSet>
+          <AssociationSet Name="FK_groups_depatrments" Association="Self.FK_groups_depatrments">
+            <End Role="departments" EntitySet="departments" />
+            <End Role="groups" EntitySet="groups" />
+          </AssociationSet>
+          <AssociationSet Name="FK_groups_hospitals" Association="Self.FK_groups_hospitals">
+            <End Role="hospitals" EntitySet="hospitals" />
+            <End Role="groups" EntitySet="groups" />
+          </AssociationSet>
+          <AssociationSet Name="FK_groups_shifts" Association="Self.FK_groups_shifts">
+            <End Role="shifts" EntitySet="shifts" />
+            <End Role="groups" EntitySet="groups" />
+          </AssociationSet>
+          <AssociationSet Name="FK_groups_students1" Association="Self.FK_groups_students1">
+            <End Role="students" EntitySet="students" />
+            <End Role="groups" EntitySet="groups" />
+          </AssociationSet>
+          <AssociationSet Name="FK_groups_students2" Association="Self.FK_groups_students2">
+            <End Role="students" EntitySet="students" />
+            <End Role="groups" EntitySet="groups" />
+          </AssociationSet>
+          <AssociationSet Name="FK_groups_students3" Association="Self.FK_groups_students3">
+            <End Role="students" EntitySet="students" />
+            <End Role="groups" EntitySet="groups" />
+          </AssociationSet>
+          <AssociationSet Name="FK_groups_students4" Association="Self.FK_groups_students4">
+            <End Role="students" EntitySet="students" />
+            <End Role="groups" EntitySet="groups" />
+          </AssociationSet>
+          <AssociationSet Name="FK_groups_students5" Association="Self.FK_groups_students5">
+            <End Role="students" EntitySet="students" />
+            <End Role="groups" EntitySet="groups" />
+          </AssociationSet>
+          <AssociationSet Name="FK_groups_students6" Association="Self.FK_groups_students6">
+            <End Role="students" EntitySet="students" />
+            <End Role="groups" EntitySet="groups" />
+          </AssociationSet>
+          <AssociationSet Name="FK_groups_trainers" Association="Self.FK_groups_trainers">
+            <End Role="trainers" EntitySet="trainers" />
+            <End Role="groups" EntitySet="groups" />
+          </AssociationSet>
+          <AssociationSet Name="FK_temp_requests_courses" Association="Self.FK_temp_requests_courses">
+            <End Role="courses" EntitySet="courses" />
+            <End Role="temp_requests" EntitySet="temp_requests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_temp_requests_students_1" Association="Self.FK_temp_requests_students_1">
+            <End Role="students" EntitySet="students" />
+            <End Role="temp_requests" EntitySet="temp_requests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_temp_requests_students2" Association="Self.FK_temp_requests_students2">
+            <End Role="students" EntitySet="students" />
+            <End Role="temp_requests" EntitySet="temp_requests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_temp_requests_students3" Association="Self.FK_temp_requests_students3">
+            <End Role="students" EntitySet="students" />
+            <End Role="temp_requests" EntitySet="temp_requests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_temp_requests_students4" Association="Self.FK_temp_requests_students4">
+            <End Role="students" EntitySet="students" />
+            <End Role="temp_requests" EntitySet="temp_requests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_temp_requests_students5" Association="Self.FK_temp_requests_students5">
+            <End Role="students" EntitySet="students" />
+            <End Role="temp_requests" EntitySet="temp_requests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_temp_requests_students6" Association="Self.FK_temp_requests_students6">
+            <End Role="students" EntitySet="students" />
+            <End Role="temp_requests" EntitySet="temp_requests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_verified_requests_courses" Association="Self.FK_verified_requests_courses">
+            <End Role="courses" EntitySet="courses" />
+            <End Role="verified_requests" EntitySet="verified_requests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_verified_requests_students1" Association="Self.FK_verified_requests_students1">
+            <End Role="students" EntitySet="students" />
+            <End Role="verified_requests" EntitySet="verified_requests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_verified_requests_students2" Association="Self.FK_verified_requests_students2">
+            <End Role="students" EntitySet="students" />
+            <End Role="verified_requests" EntitySet="verified_requests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_verified_requests_students3" Association="Self.FK_verified_requests_students3">
+            <End Role="students" EntitySet="students" />
+            <End Role="verified_requests" EntitySet="verified_requests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_verified_requests_students4" Association="Self.FK_verified_requests_students4">
+            <End Role="students" EntitySet="students" />
+            <End Role="verified_requests" EntitySet="verified_requests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_verified_requests_students5" Association="Self.FK_verified_requests_students5">
+            <End Role="students" EntitySet="students" />
+            <End Role="verified_requests" EntitySet="verified_requests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_verified_requests_students6" Association="Self.FK_verified_requests_students6">
+            <End Role="students" EntitySet="students" />
+            <End Role="verified_requests" EntitySet="verified_requests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_verified_requests_temp_requests" Association="Self.FK_verified_requests_temp_requests">
+            <End Role="temp_requests" EntitySet="temp_requests" />
+            <End Role="verified_requests" EntitySet="verified_requests" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CTOModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="admin">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="chat">
+          <Key>
+            <PropertyRef Name="chatId" />
+          </Key>
+          <Property Name="chatId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="senderId" Type="Int64" Nullable="false" />
+          <Property Name="receiverId" Type="Int64" Nullable="false" />
+          <Property Name="message" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="status" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="cours">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="deleted_groups" Relationship="Self.FK_deleted_groups_courses" FromRole="courses" ToRole="deleted_groups" />
+          <NavigationProperty Name="groups" Relationship="Self.FK_groups_courses" FromRole="courses" ToRole="groups" />
+          <NavigationProperty Name="temp_requests" Relationship="Self.FK_temp_requests_courses" FromRole="courses" ToRole="temp_requests" />
+          <NavigationProperty Name="verified_requests" Relationship="Self.FK_verified_requests_courses" FromRole="courses" ToRole="verified_requests" />
+        </EntityType>
+        <EntityType Name="day">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="deleted_groups" Relationship="Self.FK_deleted_groups_days" FromRole="days" ToRole="deleted_groups" />
+          <NavigationProperty Name="groups" Relationship="Self.FK_groups_days" FromRole="days" ToRole="groups" />
+        </EntityType>
+        <EntityType Name="deleted_groups">
+          <Key>
+            <PropertyRef Name="hospitalId" />
+            <PropertyRef Name="departmentId" />
+            <PropertyRef Name="dayId" />
+            <PropertyRef Name="shiftId" />
+          </Key>
+          <Property Name="courseId" Type="Int32" Nullable="false" />
+          <Property Name="hospitalId" Type="Int32" Nullable="false" />
+          <Property Name="departmentId" Type="Int32" Nullable="false" />
+          <Property Name="dayId" Type="Int32" Nullable="false" />
+          <Property Name="shiftId" Type="Int32" Nullable="false" />
+          <Property Name="trainerId" Type="Int32" Nullable="false" />
+          <Property Name="studentIdOne" Type="Int64" Nullable="false" />
+          <Property Name="studentIdTwo" Type="Int64" Nullable="false" />
+          <Property Name="studentIdThree" Type="Int64" />
+          <Property Name="studentIdFour" Type="Int64" />
+          <Property Name="studentIdFive" Type="Int64" />
+          <Property Name="studentIdSix" Type="Int64" />
+          <NavigationProperty Name="cours" Relationship="Self.FK_deleted_groups_courses" FromRole="deleted_groups" ToRole="courses" />
+          <NavigationProperty Name="day" Relationship="Self.FK_deleted_groups_days" FromRole="deleted_groups" ToRole="days" />
+          <NavigationProperty Name="department" Relationship="Self.FK_deleted_groups_departments" FromRole="deleted_groups" ToRole="departments" />
+          <NavigationProperty Name="hospital" Relationship="Self.FK_deleted_groups_hospitals" FromRole="deleted_groups" ToRole="hospitals" />
+          <NavigationProperty Name="shift" Relationship="Self.FK_deleted_groups_shifts" FromRole="deleted_groups" ToRole="shifts" />
+          <NavigationProperty Name="student" Relationship="Self.FK_deleted_groups_students1" FromRole="deleted_groups" ToRole="students" />
+          <NavigationProperty Name="student1" Relationship="Self.FK_deleted_groups_students2" FromRole="deleted_groups" ToRole="students" />
+          <NavigationProperty Name="student2" Relationship="Self.FK_deleted_groups_students3" FromRole="deleted_groups" ToRole="students" />
+          <NavigationProperty Name="student3" Relationship="Self.FK_deleted_groups_students4" FromRole="deleted_groups" ToRole="students" />
+          <NavigationProperty Name="student4" Relationship="Self.FK_deleted_groups_students5" FromRole="deleted_groups" ToRole="students" />
+          <NavigationProperty Name="student5" Relationship="Self.FK_deleted_groups_students6" FromRole="deleted_groups" ToRole="students" />
+          <NavigationProperty Name="trainer" Relationship="Self.FK_deleted_groups_trainers" FromRole="deleted_groups" ToRole="trainers" />
+        </EntityType>
+        <EntityType Name="department">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="deleted_groups" Relationship="Self.FK_deleted_groups_departments" FromRole="departments" ToRole="deleted_groups" />
+          <NavigationProperty Name="groups" Relationship="Self.FK_groups_depatrments" FromRole="departments" ToRole="groups" />
+        </EntityType>
+        <EntityType Name="email_status">
+          <Key>
+            <PropertyRef Name="requestId" />
+            <PropertyRef Name="studentId" />
+          </Key>
+          <Property Name="requestId" Type="Int32" Nullable="false" />
+          <Property Name="studentId" Type="Int64" Nullable="false" />
+          <Property Name="status" Type="Boolean" Nullable="false" />
+          <Property Name="activationCode" Type="Guid" Nullable="false" />
+          <NavigationProperty Name="student" Relationship="Self.FK_email_status_students" FromRole="email_status" ToRole="students" />
+          <NavigationProperty Name="temp_requests" Relationship="Self.FK_email_status_temp_requests" FromRole="email_status" ToRole="temp_requests" />
+        </EntityType>
+        <EntityType Name="group">
+          <Key>
+            <PropertyRef Name="hospitalId" />
+            <PropertyRef Name="departmentId" />
+            <PropertyRef Name="dayId" />
+            <PropertyRef Name="shiftId" />
+          </Key>
+          <Property Name="courseId" Type="Int32" Nullable="false" />
+          <Property Name="hospitalId" Type="Int32" Nullable="false" />
+          <Property Name="departmentId" Type="Int32" Nullable="false" />
+          <Property Name="dayId" Type="Int32" Nullable="false" />
+          <Property Name="shiftId" Type="Int32" Nullable="false" />
+          <Property Name="trainerId" Type="Int32" Nullable="false" />
+          <Property Name="studentIdOne" Type="Int64" Nullable="false" />
+          <Property Name="studentIdTwo" Type="Int64" Nullable="false" />
+          <Property Name="studentIdThree" Type="Int64" />
+          <Property Name="studentIdFour" Type="Int64" />
+          <Property Name="studentIdFive" Type="Int64" />
+          <Property Name="studentIdSix" Type="Int64" />
+          <NavigationProperty Name="cours" Relationship="Self.FK_groups_courses" FromRole="groups" ToRole="courses" />
+          <NavigationProperty Name="day" Relationship="Self.FK_groups_days" FromRole="groups" ToRole="days" />
+          <NavigationProperty Name="department" Relationship="Self.FK_groups_depatrments" FromRole="groups" ToRole="departments" />
+          <NavigationProperty Name="hospital" Relationship="Self.FK_groups_hospitals" FromRole="groups" ToRole="hospitals" />
+          <NavigationProperty Name="shift" Relationship="Self.FK_groups_shifts" FromRole="groups" ToRole="shifts" />
+          <NavigationProperty Name="student" Relationship="Self.FK_groups_students1" FromRole="groups" ToRole="students" />
+          <NavigationProperty Name="student1" Relationship="Self.FK_groups_students2" FromRole="groups" ToRole="students" />
+          <NavigationProperty Name="student2" Relationship="Self.FK_groups_students3" FromRole="groups" ToRole="students" />
+          <NavigationProperty Name="student3" Relationship="Self.FK_groups_students4" FromRole="groups" ToRole="students" />
+          <NavigationProperty Name="student4" Relationship="Self.FK_groups_students5" FromRole="groups" ToRole="students" />
+          <NavigationProperty Name="student5" Relationship="Self.FK_groups_students6" FromRole="groups" ToRole="students" />
+          <NavigationProperty Name="trainer" Relationship="Self.FK_groups_trainers" FromRole="groups" ToRole="trainers" />
+        </EntityType>
+        <EntityType Name="hospital">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="deleted_groups" Relationship="Self.FK_deleted_groups_hospitals" FromRole="hospitals" ToRole="deleted_groups" />
+          <NavigationProperty Name="groups" Relationship="Self.FK_groups_hospitals" FromRole="hospitals" ToRole="groups" />
+        </EntityType>
+        <EntityType Name="request_period">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="status" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="shift">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="deleted_groups" Relationship="Self.FK_deleted_groups_shifts" FromRole="shifts" ToRole="deleted_groups" />
+          <NavigationProperty Name="groups" Relationship="Self.FK_groups_shifts" FromRole="shifts" ToRole="groups" />
+        </EntityType>
+        <EntityType Name="student">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="deleted_groups" Relationship="Self.FK_deleted_groups_students1" FromRole="students" ToRole="deleted_groups" />
+          <NavigationProperty Name="deleted_groups1" Relationship="Self.FK_deleted_groups_students2" FromRole="students" ToRole="deleted_groups" />
+          <NavigationProperty Name="deleted_groups2" Relationship="Self.FK_deleted_groups_students3" FromRole="students" ToRole="deleted_groups" />
+          <NavigationProperty Name="deleted_groups3" Relationship="Self.FK_deleted_groups_students4" FromRole="students" ToRole="deleted_groups" />
+          <NavigationProperty Name="deleted_groups4" Relationship="Self.FK_deleted_groups_students5" FromRole="students" ToRole="deleted_groups" />
+          <NavigationProperty Name="deleted_groups5" Relationship="Self.FK_deleted_groups_students6" FromRole="students" ToRole="deleted_groups" />
+          <NavigationProperty Name="email_status" Relationship="Self.FK_email_status_students" FromRole="students" ToRole="email_status" />
+          <NavigationProperty Name="groups" Relationship="Self.FK_groups_students1" FromRole="students" ToRole="groups" />
+          <NavigationProperty Name="groups1" Relationship="Self.FK_groups_students2" FromRole="students" ToRole="groups" />
+          <NavigationProperty Name="groups2" Relationship="Self.FK_groups_students3" FromRole="students" ToRole="groups" />
+          <NavigationProperty Name="groups3" Relationship="Self.FK_groups_students4" FromRole="students" ToRole="groups" />
+          <NavigationProperty Name="groups4" Relationship="Self.FK_groups_students5" FromRole="students" ToRole="groups" />
+          <NavigationProperty Name="groups5" Relationship="Self.FK_groups_students6" FromRole="students" ToRole="groups" />
+          <NavigationProperty Name="temp_requests" Relationship="Self.FK_temp_requests_students_1" FromRole="students" ToRole="temp_requests" />
+          <NavigationProperty Name="temp_requests1" Relationship="Self.FK_temp_requests_students2" FromRole="students" ToRole="temp_requests" />
+          <NavigationProperty Name="temp_requests2" Relationship="Self.FK_temp_requests_students3" FromRole="students" ToRole="temp_requests" />
+          <NavigationProperty Name="temp_requests3" Relationship="Self.FK_temp_requests_students4" FromRole="students" ToRole="temp_requests" />
+          <NavigationProperty Name="temp_requests4" Relationship="Self.FK_temp_requests_students5" FromRole="students" ToRole="temp_requests" />
+          <NavigationProperty Name="temp_requests5" Relationship="Self.FK_temp_requests_students6" FromRole="students" ToRole="temp_requests" />
+          <NavigationProperty Name="verified_requests" Relationship="Self.FK_verified_requests_students1" FromRole="students" ToRole="verified_requests" />
+          <NavigationProperty Name="verified_requests1" Relationship="Self.FK_verified_requests_students2" FromRole="students" ToRole="verified_requests" />
+          <NavigationProperty Name="verified_requests2" Relationship="Self.FK_verified_requests_students3" FromRole="students" ToRole="verified_requests" />
+          <NavigationProperty Name="verified_requests3" Relationship="Self.FK_verified_requests_students4" FromRole="students" ToRole="verified_requests" />
+          <NavigationProperty Name="verified_requests4" Relationship="Self.FK_verified_requests_students5" FromRole="students" ToRole="verified_requests" />
+          <NavigationProperty Name="verified_requests5" Relationship="Self.FK_verified_requests_students6" FromRole="students" ToRole="verified_requests" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="temp_requests">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="stidentIdOne" Type="Int64" Nullable="false" />
+          <Property Name="studentIdTwo" Type="Int64" Nullable="false" />
+          <Property Name="studentIdThree" Type="Int64" />
+          <Property Name="studentIdFour" Type="Int64" />
+          <Property Name="studendIdFive" Type="Int64" />
+          <Property Name="studentIdSix" Type="Int64" />
+          <Property Name="courseId" Type="Int32" Nullable="false" />
+          <Property Name="note" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="cours" Relationship="Self.FK_temp_requests_courses" FromRole="temp_requests" ToRole="courses" />
+          <NavigationProperty Name="email_status" Relationship="Self.FK_email_status_temp_requests" FromRole="temp_requests" ToRole="email_status" />
+          <NavigationProperty Name="student" Relationship="Self.FK_temp_requests_students_1" FromRole="temp_requests" ToRole="students" />
+          <NavigationProperty Name="student1" Relationship="Self.FK_temp_requests_students2" FromRole="temp_requests" ToRole="students" />
+          <NavigationProperty Name="student2" Relationship="Self.FK_temp_requests_students3" FromRole="temp_requests" ToRole="students" />
+          <NavigationProperty Name="student3" Relationship="Self.FK_temp_requests_students4" FromRole="temp_requests" ToRole="students" />
+          <NavigationProperty Name="student4" Relationship="Self.FK_temp_requests_students5" FromRole="temp_requests" ToRole="students" />
+          <NavigationProperty Name="student5" Relationship="Self.FK_temp_requests_students6" FromRole="temp_requests" ToRole="students" />
+          <NavigationProperty Name="verified_requests" Relationship="Self.FK_verified_requests_temp_requests" FromRole="temp_requests" ToRole="verified_requests" />
+        </EntityType>
+        <EntityType Name="trainer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="deleted_groups" Relationship="Self.FK_deleted_groups_trainers" FromRole="trainers" ToRole="deleted_groups" />
+          <NavigationProperty Name="groups" Relationship="Self.FK_groups_trainers" FromRole="trainers" ToRole="groups" />
+        </EntityType>
+        <EntityType Name="verified_requests">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="studentIdOne" Type="Int64" Nullable="false" />
+          <Property Name="studentIdTwo" Type="Int64" Nullable="false" />
+          <Property Name="studentIdThree" Type="Int64" />
+          <Property Name="studentIdFour" Type="Int64" />
+          <Property Name="studentIdFive" Type="Int64" />
+          <Property Name="studentIdSix" Type="Int64" />
+          <Property Name="courseId" Type="Int32" Nullable="false" />
+          <Property Name="note" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="approved" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="cours" Relationship="Self.FK_verified_requests_courses" FromRole="verified_requests" ToRole="courses" />
+          <NavigationProperty Name="student" Relationship="Self.FK_verified_requests_students1" FromRole="verified_requests" ToRole="students" />
+          <NavigationProperty Name="student1" Relationship="Self.FK_verified_requests_students2" FromRole="verified_requests" ToRole="students" />
+          <NavigationProperty Name="student2" Relationship="Self.FK_verified_requests_students3" FromRole="verified_requests" ToRole="students" />
+          <NavigationProperty Name="student3" Relationship="Self.FK_verified_requests_students4" FromRole="verified_requests" ToRole="students" />
+          <NavigationProperty Name="student4" Relationship="Self.FK_verified_requests_students5" FromRole="verified_requests" ToRole="students" />
+          <NavigationProperty Name="student5" Relationship="Self.FK_verified_requests_students6" FromRole="verified_requests" ToRole="students" />
+          <NavigationProperty Name="temp_requests" Relationship="Self.FK_verified_requests_temp_requests" FromRole="verified_requests" ToRole="temp_requests" />
+        </EntityType>
+        <Association Name="FK_deleted_groups_courses">
+          <End Role="courses" Type="Self.cours" Multiplicity="1" />
+          <End Role="deleted_groups" Type="Self.deleted_groups" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="courses">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="deleted_groups">
+              <PropertyRef Name="courseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_groups_courses">
+          <End Role="courses" Type="Self.cours" Multiplicity="1" />
+          <End Role="groups" Type="Self.group" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="courses">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="groups">
+              <PropertyRef Name="courseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_temp_requests_courses">
+          <End Role="courses" Type="Self.cours" Multiplicity="1" />
+          <End Role="temp_requests" Type="Self.temp_requests" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="courses">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="temp_requests">
+              <PropertyRef Name="courseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_verified_requests_courses">
+          <End Role="courses" Type="Self.cours" Multiplicity="1" />
+          <End Role="verified_requests" Type="Self.verified_requests" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="courses">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="verified_requests">
+              <PropertyRef Name="courseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_deleted_groups_days">
+          <End Role="days" Type="Self.day" Multiplicity="1" />
+          <End Role="deleted_groups" Type="Self.deleted_groups" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="days">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="deleted_groups">
+              <PropertyRef Name="dayId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_groups_days">
+          <End Role="days" Type="Self.day" Multiplicity="1" />
+          <End Role="groups" Type="Self.group" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="days">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="groups">
+              <PropertyRef Name="dayId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_deleted_groups_departments">
+          <End Role="departments" Type="Self.department" Multiplicity="1" />
+          <End Role="deleted_groups" Type="Self.deleted_groups" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="departments">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="deleted_groups">
+              <PropertyRef Name="departmentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_deleted_groups_hospitals">
+          <End Role="hospitals" Type="Self.hospital" Multiplicity="1" />
+          <End Role="deleted_groups" Type="Self.deleted_groups" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="hospitals">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="deleted_groups">
+              <PropertyRef Name="hospitalId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_deleted_groups_shifts">
+          <End Role="shifts" Type="Self.shift" Multiplicity="1" />
+          <End Role="deleted_groups" Type="Self.deleted_groups" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="shifts">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="deleted_groups">
+              <PropertyRef Name="shiftId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_deleted_groups_students1">
+          <End Role="students" Type="Self.student" Multiplicity="1" />
+          <End Role="deleted_groups" Type="Self.deleted_groups" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="students">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="deleted_groups">
+              <PropertyRef Name="studentIdOne" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_deleted_groups_students2">
+          <End Role="students" Type="Self.student" Multiplicity="1" />
+          <End Role="deleted_groups" Type="Self.deleted_groups" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="students">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="deleted_groups">
+              <PropertyRef Name="studentIdTwo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_deleted_groups_students3">
+          <End Role="students" Type="Self.student" Multiplicity="0..1" />
+          <End Role="deleted_groups" Type="Self.deleted_groups" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="students">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="deleted_groups">
+              <PropertyRef Name="studentIdThree" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_deleted_groups_students4">
+          <End Role="students" Type="Self.student" Multiplicity="0..1" />
+          <End Role="deleted_groups" Type="Self.deleted_groups" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="students">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="deleted_groups">
+              <PropertyRef Name="studentIdFour" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_deleted_groups_students5">
+          <End Role="students" Type="Self.student" Multiplicity="0..1" />
+          <End Role="deleted_groups" Type="Self.deleted_groups" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="students">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="deleted_groups">
+              <PropertyRef Name="studentIdFive" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_deleted_groups_students6">
+          <End Role="students" Type="Self.student" Multiplicity="0..1" />
+          <End Role="deleted_groups" Type="Self.deleted_groups" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="students">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="deleted_groups">
+              <PropertyRef Name="studentIdSix" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_deleted_groups_trainers">
+          <End Role="trainers" Type="Self.trainer" Multiplicity="1" />
+          <End Role="deleted_groups" Type="Self.deleted_groups" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="trainers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="deleted_groups">
+              <PropertyRef Name="trainerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_groups_depatrments">
+          <End Role="departments" Type="Self.department" Multiplicity="1" />
+          <End Role="groups" Type="Self.group" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="departments">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="groups">
+              <PropertyRef Name="departmentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_email_status_students">
+          <End Role="students" Type="Self.student" Multiplicity="1" />
+          <End Role="email_status" Type="Self.email_status" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="students">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="email_status">
+              <PropertyRef Name="studentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_email_status_temp_requests">
+          <End Role="temp_requests" Type="Self.temp_requests" Multiplicity="1" />
+          <End Role="email_status" Type="Self.email_status" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="temp_requests">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="email_status">
+              <PropertyRef Name="requestId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_groups_hospitals">
+          <End Role="hospitals" Type="Self.hospital" Multiplicity="1" />
+          <End Role="groups" Type="Self.group" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="hospitals">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="groups">
+              <PropertyRef Name="hospitalId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_groups_shifts">
+          <End Role="shifts" Type="Self.shift" Multiplicity="1" />
+          <End Role="groups" Type="Self.group" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="shifts">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="groups">
+              <PropertyRef Name="shiftId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_groups_students1">
+          <End Role="students" Type="Self.student" Multiplicity="1" />
+          <End Role="groups" Type="Self.group" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="students">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="groups">
+              <PropertyRef Name="studentIdOne" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_groups_students2">
+          <End Role="students" Type="Self.student" Multiplicity="1" />
+          <End Role="groups" Type="Self.group" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="students">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="groups">
+              <PropertyRef Name="studentIdTwo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_groups_students3">
+          <End Role="students" Type="Self.student" Multiplicity="0..1" />
+          <End Role="groups" Type="Self.group" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="students">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="groups">
+              <PropertyRef Name="studentIdThree" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_groups_students4">
+          <End Role="students" Type="Self.student" Multiplicity="0..1" />
+          <End Role="groups" Type="Self.group" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="students">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="groups">
+              <PropertyRef Name="studentIdFour" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_groups_students5">
+          <End Role="students" Type="Self.student" Multiplicity="0..1" />
+          <End Role="groups" Type="Self.group" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="students">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="groups">
+              <PropertyRef Name="studentIdFive" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_groups_students6">
+          <End Role="students" Type="Self.student" Multiplicity="0..1" />
+          <End Role="groups" Type="Self.group" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="students">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="groups">
+              <PropertyRef Name="studentIdSix" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_groups_trainers">
+          <End Role="trainers" Type="Self.trainer" Multiplicity="1" />
+          <End Role="groups" Type="Self.group" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="trainers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="groups">
+              <PropertyRef Name="trainerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_temp_requests_students_1">
+          <End Role="students" Type="Self.student" Multiplicity="1" />
+          <End Role="temp_requests" Type="Self.temp_requests" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="students">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="temp_requests">
+              <PropertyRef Name="stidentIdOne" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_temp_requests_students2">
+          <End Role="students" Type="Self.student" Multiplicity="1" />
+          <End Role="temp_requests" Type="Self.temp_requests" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="students">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="temp_requests">
+              <PropertyRef Name="studentIdTwo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_temp_requests_students3">
+          <End Role="students" Type="Self.student" Multiplicity="0..1" />
+          <End Role="temp_requests" Type="Self.temp_requests" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="students">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="temp_requests">
+              <PropertyRef Name="studentIdThree" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_temp_requests_students4">
+          <End Role="students" Type="Self.student" Multiplicity="0..1" />
+          <End Role="temp_requests" Type="Self.temp_requests" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="students">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="temp_requests">
+              <PropertyRef Name="studentIdFour" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_temp_requests_students5">
+          <End Role="students" Type="Self.student" Multiplicity="0..1" />
+          <End Role="temp_requests" Type="Self.temp_requests" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="students">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="temp_requests">
+              <PropertyRef Name="studendIdFive" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_temp_requests_students6">
+          <End Role="students" Type="Self.student" Multiplicity="0..1" />
+          <End Role="temp_requests" Type="Self.temp_requests" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="students">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="temp_requests">
+              <PropertyRef Name="studentIdSix" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_verified_requests_students1">
+          <End Role="students" Type="Self.student" Multiplicity="1" />
+          <End Role="verified_requests" Type="Self.verified_requests" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="students">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="verified_requests">
+              <PropertyRef Name="studentIdOne" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_verified_requests_students2">
+          <End Role="students" Type="Self.student" Multiplicity="1" />
+          <End Role="verified_requests" Type="Self.verified_requests" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="students">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="verified_requests">
+              <PropertyRef Name="studentIdTwo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_verified_requests_students3">
+          <End Role="students" Type="Self.student" Multiplicity="0..1" />
+          <End Role="verified_requests" Type="Self.verified_requests" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="students">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="verified_requests">
+              <PropertyRef Name="studentIdThree" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_verified_requests_students4">
+          <End Role="students" Type="Self.student" Multiplicity="0..1" />
+          <End Role="verified_requests" Type="Self.verified_requests" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="students">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="verified_requests">
+              <PropertyRef Name="studentIdFour" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_verified_requests_students5">
+          <End Role="students" Type="Self.student" Multiplicity="0..1" />
+          <End Role="verified_requests" Type="Self.verified_requests" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="students">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="verified_requests">
+              <PropertyRef Name="studentIdFive" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_verified_requests_students6">
+          <End Role="students" Type="Self.student" Multiplicity="0..1" />
+          <End Role="verified_requests" Type="Self.verified_requests" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="students">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="verified_requests">
+              <PropertyRef Name="studentIdSix" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_verified_requests_temp_requests">
+          <End Role="temp_requests" Type="Self.temp_requests" Multiplicity="1" />
+          <End Role="verified_requests" Type="Self.verified_requests" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="temp_requests">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="verified_requests">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CTOEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="admins" EntityType="Self.admin" />
+          <EntitySet Name="chats" EntityType="Self.chat" />
+          <EntitySet Name="courses" EntityType="Self.cours" />
+          <EntitySet Name="days" EntityType="Self.day" />
+          <EntitySet Name="deleted_groups" EntityType="Self.deleted_groups" />
+          <EntitySet Name="departments" EntityType="Self.department" />
+          <EntitySet Name="email_status" EntityType="Self.email_status" />
+          <EntitySet Name="groups" EntityType="Self.group" />
+          <EntitySet Name="hospitals" EntityType="Self.hospital" />
+          <EntitySet Name="request_period" EntityType="Self.request_period" />
+          <EntitySet Name="shifts" EntityType="Self.shift" />
+          <EntitySet Name="students" EntityType="Self.student" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="temp_requests" EntityType="Self.temp_requests" />
+          <EntitySet Name="trainers" EntityType="Self.trainer" />
+          <EntitySet Name="verified_requests" EntityType="Self.verified_requests" />
+          <AssociationSet Name="FK_deleted_groups_courses" Association="Self.FK_deleted_groups_courses">
+            <End Role="courses" EntitySet="courses" />
+            <End Role="deleted_groups" EntitySet="deleted_groups" />
+          </AssociationSet>
+          <AssociationSet Name="FK_groups_courses" Association="Self.FK_groups_courses">
+            <End Role="courses" EntitySet="courses" />
+            <End Role="groups" EntitySet="groups" />
+          </AssociationSet>
+          <AssociationSet Name="FK_temp_requests_courses" Association="Self.FK_temp_requests_courses">
+            <End Role="courses" EntitySet="courses" />
+            <End Role="temp_requests" EntitySet="temp_requests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_verified_requests_courses" Association="Self.FK_verified_requests_courses">
+            <End Role="courses" EntitySet="courses" />
+            <End Role="verified_requests" EntitySet="verified_requests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_deleted_groups_days" Association="Self.FK_deleted_groups_days">
+            <End Role="days" EntitySet="days" />
+            <End Role="deleted_groups" EntitySet="deleted_groups" />
+          </AssociationSet>
+          <AssociationSet Name="FK_groups_days" Association="Self.FK_groups_days">
+            <End Role="days" EntitySet="days" />
+            <End Role="groups" EntitySet="groups" />
+          </AssociationSet>
+          <AssociationSet Name="FK_deleted_groups_departments" Association="Self.FK_deleted_groups_departments">
+            <End Role="departments" EntitySet="departments" />
+            <End Role="deleted_groups" EntitySet="deleted_groups" />
+          </AssociationSet>
+          <AssociationSet Name="FK_deleted_groups_hospitals" Association="Self.FK_deleted_groups_hospitals">
+            <End Role="hospitals" EntitySet="hospitals" />
+            <End Role="deleted_groups" EntitySet="deleted_groups" />
+          </AssociationSet>
+          <AssociationSet Name="FK_deleted_groups_shifts" Association="Self.FK_deleted_groups_shifts">
+            <End Role="shifts" EntitySet="shifts" />
+            <End Role="deleted_groups" EntitySet="deleted_groups" />
+          </AssociationSet>
+          <AssociationSet Name="FK_deleted_groups_students1" Association="Self.FK_deleted_groups_students1">
+            <End Role="students" EntitySet="students" />
+            <End Role="deleted_groups" EntitySet="deleted_groups" />
+          </AssociationSet>
+          <AssociationSet Name="FK_deleted_groups_students2" Association="Self.FK_deleted_groups_students2">
+            <End Role="students" EntitySet="students" />
+            <End Role="deleted_groups" EntitySet="deleted_groups" />
+          </AssociationSet>
+          <AssociationSet Name="FK_deleted_groups_students3" Association="Self.FK_deleted_groups_students3">
+            <End Role="students" EntitySet="students" />
+            <End Role="deleted_groups" EntitySet="deleted_groups" />
+          </AssociationSet>
+          <AssociationSet Name="FK_deleted_groups_students4" Association="Self.FK_deleted_groups_students4">
+            <End Role="students" EntitySet="students" />
+            <End Role="deleted_groups" EntitySet="deleted_groups" />
+          </AssociationSet>
+          <AssociationSet Name="FK_deleted_groups_students5" Association="Self.FK_deleted_groups_students5">
+            <End Role="students" EntitySet="students" />
+            <End Role="deleted_groups" EntitySet="deleted_groups" />
+          </AssociationSet>
+          <AssociationSet Name="FK_deleted_groups_students6" Association="Self.FK_deleted_groups_students6">
+            <End Role="students" EntitySet="students" />
+            <End Role="deleted_groups" EntitySet="deleted_groups" />
+          </AssociationSet>
+          <AssociationSet Name="FK_deleted_groups_trainers" Association="Self.FK_deleted_groups_trainers">
+            <End Role="trainers" EntitySet="trainers" />
+            <End Role="deleted_groups" EntitySet="deleted_groups" />
+          </AssociationSet>
+          <AssociationSet Name="FK_groups_depatrments" Association="Self.FK_groups_depatrments">
+            <End Role="departments" EntitySet="departments" />
+            <End Role="groups" EntitySet="groups" />
+          </AssociationSet>
+          <AssociationSet Name="FK_email_status_students" Association="Self.FK_email_status_students">
+            <End Role="students" EntitySet="students" />
+            <End Role="email_status" EntitySet="email_status" />
+          </AssociationSet>
+          <AssociationSet Name="FK_email_status_temp_requests" Association="Self.FK_email_status_temp_requests">
+            <End Role="temp_requests" EntitySet="temp_requests" />
+            <End Role="email_status" EntitySet="email_status" />
+          </AssociationSet>
+          <AssociationSet Name="FK_groups_hospitals" Association="Self.FK_groups_hospitals">
+            <End Role="hospitals" EntitySet="hospitals" />
+            <End Role="groups" EntitySet="groups" />
+          </AssociationSet>
+          <AssociationSet Name="FK_groups_shifts" Association="Self.FK_groups_shifts">
+            <End Role="shifts" EntitySet="shifts" />
+            <End Role="groups" EntitySet="groups" />
+          </AssociationSet>
+          <AssociationSet Name="FK_groups_students1" Association="Self.FK_groups_students1">
+            <End Role="students" EntitySet="students" />
+            <End Role="groups" EntitySet="groups" />
+          </AssociationSet>
+          <AssociationSet Name="FK_groups_students2" Association="Self.FK_groups_students2">
+            <End Role="students" EntitySet="students" />
+            <End Role="groups" EntitySet="groups" />
+          </AssociationSet>
+          <AssociationSet Name="FK_groups_students3" Association="Self.FK_groups_students3">
+            <End Role="students" EntitySet="students" />
+            <End Role="groups" EntitySet="groups" />
+          </AssociationSet>
+          <AssociationSet Name="FK_groups_students4" Association="Self.FK_groups_students4">
+            <End Role="students" EntitySet="students" />
+            <End Role="groups" EntitySet="groups" />
+          </AssociationSet>
+          <AssociationSet Name="FK_groups_students5" Association="Self.FK_groups_students5">
+            <End Role="students" EntitySet="students" />
+            <End Role="groups" EntitySet="groups" />
+          </AssociationSet>
+          <AssociationSet Name="FK_groups_students6" Association="Self.FK_groups_students6">
+            <End Role="students" EntitySet="students" />
+            <End Role="groups" EntitySet="groups" />
+          </AssociationSet>
+          <AssociationSet Name="FK_groups_trainers" Association="Self.FK_groups_trainers">
+            <End Role="trainers" EntitySet="trainers" />
+            <End Role="groups" EntitySet="groups" />
+          </AssociationSet>
+          <AssociationSet Name="FK_temp_requests_students_1" Association="Self.FK_temp_requests_students_1">
+            <End Role="students" EntitySet="students" />
+            <End Role="temp_requests" EntitySet="temp_requests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_temp_requests_students2" Association="Self.FK_temp_requests_students2">
+            <End Role="students" EntitySet="students" />
+            <End Role="temp_requests" EntitySet="temp_requests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_temp_requests_students3" Association="Self.FK_temp_requests_students3">
+            <End Role="students" EntitySet="students" />
+            <End Role="temp_requests" EntitySet="temp_requests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_temp_requests_students4" Association="Self.FK_temp_requests_students4">
+            <End Role="students" EntitySet="students" />
+            <End Role="temp_requests" EntitySet="temp_requests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_temp_requests_students5" Association="Self.FK_temp_requests_students5">
+            <End Role="students" EntitySet="students" />
+            <End Role="temp_requests" EntitySet="temp_requests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_temp_requests_students6" Association="Self.FK_temp_requests_students6">
+            <End Role="students" EntitySet="students" />
+            <End Role="temp_requests" EntitySet="temp_requests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_verified_requests_students1" Association="Self.FK_verified_requests_students1">
+            <End Role="students" EntitySet="students" />
+            <End Role="verified_requests" EntitySet="verified_requests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_verified_requests_students2" Association="Self.FK_verified_requests_students2">
+            <End Role="students" EntitySet="students" />
+            <End Role="verified_requests" EntitySet="verified_requests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_verified_requests_students3" Association="Self.FK_verified_requests_students3">
+            <End Role="students" EntitySet="students" />
+            <End Role="verified_requests" EntitySet="verified_requests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_verified_requests_students4" Association="Self.FK_verified_requests_students4">
+            <End Role="students" EntitySet="students" />
+            <End Role="verified_requests" EntitySet="verified_requests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_verified_requests_students5" Association="Self.FK_verified_requests_students5">
+            <End Role="students" EntitySet="students" />
+            <End Role="verified_requests" EntitySet="verified_requests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_verified_requests_students6" Association="Self.FK_verified_requests_students6">
+            <End Role="students" EntitySet="students" />
+            <End Role="verified_requests" EntitySet="verified_requests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_verified_requests_temp_requests" Association="Self.FK_verified_requests_temp_requests">
+            <End Role="temp_requests" EntitySet="temp_requests" />
+            <End Role="verified_requests" EntitySet="verified_requests" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CTOModelStoreContainer" CdmEntityContainer="CTOEntities">
+          <EntitySetMapping Name="admins">
+            <EntityTypeMapping TypeName="CTOModel.admin">
+              <MappingFragment StoreEntitySet="admins">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="password" ColumnName="password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="chats">
+            <EntityTypeMapping TypeName="CTOModel.chat">
+              <MappingFragment StoreEntitySet="chats">
+                <ScalarProperty Name="chatId" ColumnName="chatId" />
+                <ScalarProperty Name="senderId" ColumnName="senderId" />
+                <ScalarProperty Name="receiverId" ColumnName="receiverId" />
+                <ScalarProperty Name="message" ColumnName="message" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="status" ColumnName="status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="courses">
+            <EntityTypeMapping TypeName="CTOModel.cours">
+              <MappingFragment StoreEntitySet="courses">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="days">
+            <EntityTypeMapping TypeName="CTOModel.day">
+              <MappingFragment StoreEntitySet="days">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="deleted_groups">
+            <EntityTypeMapping TypeName="CTOModel.deleted_groups">
+              <MappingFragment StoreEntitySet="deleted_groups">
+                <ScalarProperty Name="courseId" ColumnName="courseId" />
+                <ScalarProperty Name="hospitalId" ColumnName="hospitalId" />
+                <ScalarProperty Name="departmentId" ColumnName="departmentId" />
+                <ScalarProperty Name="dayId" ColumnName="dayId" />
+                <ScalarProperty Name="shiftId" ColumnName="shiftId" />
+                <ScalarProperty Name="trainerId" ColumnName="trainerId" />
+                <ScalarProperty Name="studentIdOne" ColumnName="studentIdOne" />
+                <ScalarProperty Name="studentIdTwo" ColumnName="studentIdTwo" />
+                <ScalarProperty Name="studentIdThree" ColumnName="studentIdThree" />
+                <ScalarProperty Name="studentIdFour" ColumnName="studentIdFour" />
+                <ScalarProperty Name="studentIdFive" ColumnName="studentIdFive" />
+                <ScalarProperty Name="studentIdSix" ColumnName="studentIdSix" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="departments">
+            <EntityTypeMapping TypeName="CTOModel.department">
+              <MappingFragment StoreEntitySet="departments">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="email_status">
+            <EntityTypeMapping TypeName="CTOModel.email_status">
+              <MappingFragment StoreEntitySet="email-status">
+                <ScalarProperty Name="requestId" ColumnName="requestId" />
+                <ScalarProperty Name="studentId" ColumnName="studentId" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="activationCode" ColumnName="activationCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="groups">
+            <EntityTypeMapping TypeName="CTOModel.group">
+              <MappingFragment StoreEntitySet="groups">
+                <ScalarProperty Name="courseId" ColumnName="courseId" />
+                <ScalarProperty Name="hospitalId" ColumnName="hospitalId" />
+                <ScalarProperty Name="departmentId" ColumnName="departmentId" />
+                <ScalarProperty Name="dayId" ColumnName="dayId" />
+                <ScalarProperty Name="shiftId" ColumnName="shiftId" />
+                <ScalarProperty Name="trainerId" ColumnName="trainerId" />
+                <ScalarProperty Name="studentIdOne" ColumnName="studentIdOne" />
+                <ScalarProperty Name="studentIdTwo" ColumnName="studentIdTwo" />
+                <ScalarProperty Name="studentIdThree" ColumnName="studentIdThree" />
+                <ScalarProperty Name="studentIdFour" ColumnName="studentIdFour" />
+                <ScalarProperty Name="studentIdFive" ColumnName="studentIdFive" />
+                <ScalarProperty Name="studentIdSix" ColumnName="studentIdSix" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="hospitals">
+            <EntityTypeMapping TypeName="CTOModel.hospital">
+              <MappingFragment StoreEntitySet="hospitals">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="request_period">
+            <EntityTypeMapping TypeName="CTOModel.request_period">
+              <MappingFragment StoreEntitySet="request_period">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="status" ColumnName="status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="shifts">
+            <EntityTypeMapping TypeName="CTOModel.shift">
+              <MappingFragment StoreEntitySet="shifts">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="students">
+            <EntityTypeMapping TypeName="CTOModel.student">
+              <MappingFragment StoreEntitySet="students">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="password" ColumnName="password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="CTOModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="temp_requests">
+            <EntityTypeMapping TypeName="CTOModel.temp_requests">
+              <MappingFragment StoreEntitySet="temp_requests">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="stidentIdOne" ColumnName="stidentIdOne" />
+                <ScalarProperty Name="studentIdTwo" ColumnName="studentIdTwo" />
+                <ScalarProperty Name="studentIdThree" ColumnName="studentIdThree" />
+                <ScalarProperty Name="studentIdFour" ColumnName="studentIdFour" />
+                <ScalarProperty Name="studendIdFive" ColumnName="studendIdFive" />
+                <ScalarProperty Name="studentIdSix" ColumnName="studentIdSix" />
+                <ScalarProperty Name="courseId" ColumnName="courseId" />
+                <ScalarProperty Name="note" ColumnName="note" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="trainers">
+            <EntityTypeMapping TypeName="CTOModel.trainer">
+              <MappingFragment StoreEntitySet="trainers">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="verified_requests">
+            <EntityTypeMapping TypeName="CTOModel.verified_requests">
+              <MappingFragment StoreEntitySet="verified_requests">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="studentIdOne" ColumnName="studentIdOne" />
+                <ScalarProperty Name="studentIdTwo" ColumnName="studentIdTwo" />
+                <ScalarProperty Name="studentIdThree" ColumnName="studentIdThree" />
+                <ScalarProperty Name="studentIdFour" ColumnName="studentIdFour" />
+                <ScalarProperty Name="studentIdFive" ColumnName="studentIdFive" />
+                <ScalarProperty Name="studentIdSix" ColumnName="studentIdSix" />
+                <ScalarProperty Name="courseId" ColumnName="courseId" />
+                <ScalarProperty Name="note" ColumnName="note" />
+                <ScalarProperty Name="approved" ColumnName="approved" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

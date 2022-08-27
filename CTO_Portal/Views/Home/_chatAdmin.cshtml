@@ -1,0 +1,64 @@
+﻿
+<ul class="contacts">
+	@{
+		
+		if (ViewBag.allStudentsWithChats != null )
+		{
+			foreach (CTO_Portal.Models.student_chat item in ViewBag.allStudentsWithChats)
+			{
+
+				<li style="margin-bottom: 0px;">
+					@using (Html.BeginForm())
+					{
+						@Html.AntiForgeryToken()
+						<button type="button" class="btn" name="formsubmit" onclick="go( @item.Student.Id )">
+							<div class="d-flex bd-highlight" style="margin-bottom:0px;">
+								<div class="user_info" style="margin-bottom: 0px;">
+									<span style="font-size: 25px; font-weight: bold;" data-name="AllIds">@item.Student.Id</span>
+									<p style="margin-bottom:0px;">@item.Student.name</p>
+
+									@if (item.Message != null)
+									{
+										if (item.Message.message.Length > 15)
+										{
+											if (item.Message.status == true)
+											{
+												<p style="font-size: 20px; margin-bottom: 0px;">
+													@item.Message.message.Substring(0, 15)
+												</p>
+											}
+											else
+											{
+												string message = item.Message.message.Substring(0, 15);
+												<p style="font-size: 20px; margin-bottom: 0px; color:white; font-weight:700;">
+													@message
+												</p>
+											}
+										}
+										else
+										{
+											if (item.Message.status == true)
+											{
+												<p style="font-size: 20px; margin-bottom: 0px;">
+													@item.Message.message
+												</p>
+											}
+											else
+											{
+												string message = item.Message.message;
+												<p style="font-size: 20px; margin-bottom: 0px; color: white; font-weight: 700; ">
+													@message
+												</p>
+											}
+										}
+									}
+								</div>
+							</div>
+						</button>
+					}
+				</li>
+
+			}
+		}
+	}
+</ul>

@@ -1,0 +1,83 @@
+﻿@model CTO_Portal.Models.temp_requests
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>temp_requests</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.note)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.note)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cours.name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cours.name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.student.name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.student.name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.student1.name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.student1.name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.student2.name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.student2.name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.student3.name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.student3.name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.student4.name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.student4.name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.student5.name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.student5.name)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

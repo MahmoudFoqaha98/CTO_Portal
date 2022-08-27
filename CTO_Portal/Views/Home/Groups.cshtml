@@ -1,0 +1,351 @@
+﻿@model IEnumerable<CTO_Portal.Models.group>
+
+@{
+	ViewBag.Title = "Groups";
+	Layout = "~/Views/Shared/_LayoutAdminDashboard.cshtml";
+}
+
+
+
+
+<div style="width: 95%; padding-top: 15px; padding-bottom: 10px; margin-left: 2%;">
+
+
+	<h1 style="color: #FFFFFF;text-shadow: 0 1px 0 #CCCCCC, 0 2px 0 #c9c9c9, 0 3px 0 #bbb, 0 4px 0 #b9b9b9, 0 5px 0 #aaa, 0 6px 1px rgba(0,0,0,.1), 0 0 5px rgba(0,0,0,.1), 0 1px 3px rgba(0,0,0,.3), 0 3px 5px rgba(0,0,0,.2), 0 5px 10px rgba(0,0,0,.25), 0 10px 10px rgba(0,0,0,.2), 0 20px 20px rgba(0,0,0,.15);color: #FFFFFF;">
+		Groups
+	</h1>
+
+	<table>
+		<tr>
+			<td style=" width: 468px;">   <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search..." title="Type in a name">  </td>
+			<td>  @Html.DropDownList("courseId", null, "Courses", htmlAttributes: new { @class = "select form-control myInput3", @id = "myInput5", @onchange = "filterTables()" })</td>
+			<td>  @Html.DropDownList("hospitalId", null, "Hospitals", htmlAttributes: new { @class = "select form-control myInput3", @id = "myInput6", @onchange = "filterTables()" })</td>
+			<td>  @Html.DropDownList("dayId", null, "Days", htmlAttributes: new { @class = "select form-control myInput3", @id = "myInput7", @onchange = "filterTables()" })</td>
+		</tr>
+	</table>
+
+	<a href="/Home/CreateGroup" class="btn btn-primary" onclick="clearMyGroup()">
+		Create new
+		&nbsp;
+		<img src="~/Content/images/icon_add.png" class="nv-icons2" />
+	</a>
+	<script>
+
+		function clearMyGroup()
+		{
+			@{
+				Session["myGroup"] = null;
+			}
+		}
+	</script>
+</div>
+<p id="demo"></p>
+<div class="table-wrapper" style="width: 95%; background-color: white; padding-top: 15px; padding-bottom: 10px; margin-left: 2%">
+
+	@foreach (var item in Model)
+	{
+	<div>
+
+		@using (Html.BeginForm( new { @id ="frm"} ))
+		{
+			<input type="hidden" value="@item.courseId" name="courseId" />
+			<input type="hidden" value="@item.hospitalId" name="hospitalId" />
+			<input type="hidden" value="@item.departmentId" name="departmentId" />
+			<input type="hidden" value="@item.dayId" name="dayId" />
+			<input type="hidden" value="@item.shiftId" name="shiftId" />
+			<input type="hidden" value="@item.trainerId" name="trainerId" />
+
+			
+			<input type="hidden" value="@item.studentIdOne" name="studentIdOne" />
+			<input type="hidden" value="@item.studentIdTwo" name="studentIdTwo" />
+			<input type="hidden" value="@item.studentIdThree" name="studentIdThree" />
+			<input type="hidden" value="@item.studentIdFour" name="studentIdFour" />
+			<input type="hidden" value="@item.studentIdFive" name="studentIdFive" />
+			<input type="hidden" value="@item.studentIdSix" name="studentIdSix" />
+
+			
+
+			<div class="table-wrapper" style="margin: 10px 70px 20px;">
+				<table id="myTable" class="fl-table" style="border: 2px solid #324960" data-name="mytable">
+					<thead>
+						<tr>
+							<th style=" width: 3%;">#</th>
+							<th  style=" width: 10%;">Students ID</th>
+							<th style=" width: 22%;">Student Name</th>
+							<th style=" width: 14%;">Course</th>
+							<th style=" width: 14%;">Hospital</th>
+							<th style=" width: 10%;">Day</th>
+							<th style=" width: 14%;">Trainer</th>
+							<th style=" width: 14%;">Actions</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td class="table_border" style=" width: 3%;">1</td>
+							<td class="table_border" style=" width: 10%;">
+								@Html.DisplayFor(modelItem => item.student.Id)
+							</td>
+							<td class="table_border" style=" width: 18%;">
+								@Html.DisplayFor(modelItem => item.student.name)
+							</td>
+							<td rowspan="6" class="table_border" style=" width: 14%;">
+								@Html.DisplayFor(modelItem => item.cours.name)
+							</td>
+							<td rowspan="3" class="table_border" style=" width: 14%;">
+								@Html.DisplayFor(modelItem => item.hospital.name)
+							</td>
+							<td rowspan="3" class="table_border" style=" width: 10%;">
+								@Html.DisplayFor(modelItem => item.day.name)
+							</td>
+							<td rowspan="6" class="table_border" style=" width: 14%;">
+								@Html.DisplayFor(modelItem => item.trainer.name)
+							</td>
+							<td rowspan="6" class="table_border" style=" width: 14%;">
+								<button type="submit" id="TempEditGroup" class="btn btn-sm btn-success" value="TempEditGroup" formaction="@Url.Action("TempEditGroup","Home")" style="width:80px;">
+									<i class="fas fa-edit"></i>
+									Edit
+								</button>
+
+
+								<br />
+								<br />
+								<button type="submit" onclick=" return clicked()" class="btn btn-sm btn-danger" value="DeleteGroup" formaction="@Url.Action("DeleteGroup","Home")">
+									<i class="fas fa-times"></i>
+									Delete
+								</button>
+
+							</td>
+						</tr>
+						<tr>
+							<td class="table_border" style=" width: 3%;">2</td>
+							<td class="table_border" style=" width: 10%;">
+								@Html.DisplayFor(modelItem => item.student1.Id)
+							</td>
+							<td class="table_border" style=" width: 22%;">
+								@Html.DisplayFor(modelItem => item.student1.name)
+							</td>
+						</tr>
+						<tr>
+							<td class="table_border" style=" width: 3%;">3</td>
+							<td class="table_border" style=" width: 10%;">
+								@Html.DisplayFor(modelItem => item.student2.Id)
+							</td>
+							<td class="table_border" style=" width: 22%;">
+								@Html.DisplayFor(modelItem => item.student2.name)
+							</td>
+						</tr>
+						<tr style=" height:50% ">
+							<td class="table_border" style=" width: 3%;">4</td>
+							<td class="table_border" style=" width: 10%;">
+								@Html.DisplayFor(modelItem => item.student3.Id)
+							</td>
+							<td class="table_border" style=" width: 22%;">
+								@Html.DisplayFor(modelItem => item.student3.name)
+							</td>
+
+							<td rowspan="3" class="table_border" style=" width: 14%;">
+								@Html.DisplayFor(modelItem => item.department.name)
+							</td>
+
+							<td rowspan="3" class="table_border" style=" width: 10%;">
+								@Html.DisplayFor(modelItem => item.shift.name)
+							</td>
+						</tr>
+						<tr>
+							<td class="table_border" style=" width: 3%;">5</td>
+							<td class="table_border" style=" width: 10%;">
+								@Html.DisplayFor(modelItem => item.student4.Id)
+							</td>
+							<td class="table_border" style=" width: 22%;">
+								@Html.DisplayFor(modelItem => item.student4.name)
+							</td>
+						</tr>
+						<tr>
+							<td class="table_border" style=" width: 3%;">6</td>
+							<td class="table_border" style=" width: 10%;">
+								@Html.DisplayFor(modelItem => item.student5.Id)
+							</td>
+							<td class="table_border" style=" width: 22%;">
+								@Html.DisplayFor(modelItem => item.student5.name)
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		}
+	</div>
+	}
+</div>
+
+<br />
+<div style="width: 95%; padding-top: 15px; padding-bottom: 10px; margin-left: 2%;">
+	<a href="@Url.Action("adminDashboard","Home")" class="btn btn-warning">
+		<i class="fas fa-arrow-circle-left"></i>
+		Back
+	</a>
+</div>
+
+
+<script type="text/javascript">
+	function clicked()
+	{
+		if (confirm("Are you sure you wont to delete this group? You can't restore it"))
+		{
+			document.getElementById("frm").submit();
+		}
+		else
+		{
+           return false;
+        }
+	}
+
+</script>
+
+
+
+
+
+
+
+@*  ----------------  searech by student id  ---------------- *@
+
+<script>
+	function myFunction() {
+		var input, filter, table, tr, td, i, alltables;
+		alltables = document.querySelectorAll("table[data-name=mytable]");
+		input = document.getElementById("myInput");
+		filter = input.value.toUpperCase();
+		alltables.forEach(function (table) // loop on tables
+		{
+			tr = table.getElementsByTagName("tr"); // get all table rows for each table
+			flag = false;
+			for (i = 0; i < tr.length; i++) // loop on table rows
+			{
+				td = tr[i].getElementsByTagName("td")[1];
+				if (td) {
+					if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+						flag = true;
+					}
+				}
+			}
+
+			if (!flag)
+				table.style.display = "none";
+			else
+				table.style.display = "";
+
+
+		});
+	}
+</script>
+
+
+
+<script>
+
+	function filterTables() {
+		var alltables = document.querySelectorAll("table[data-name=mytable]");
+
+		var cars = new Array();
+		var car = new Array();
+		var ca = new Array();
+
+		//document.getElementById("res").innerHTML = filter;
+		alltables.forEach(function (table) // loop on tables
+		{
+			var res1 = searchCourse(table);
+			var res2 = searchHospital(table);
+			var res3 = searchDay(table);
+
+			if (res1 && res2 && res3)
+				table.style.display = "";
+			else
+				table.style.display = "none";
+
+			cars.push(res1);
+			car.push(res2);
+			ca.push(res3);
+
+		});
+		document.getElementById("rr").innerHTML = cars;
+		document.getElementById("rr2").innerHTML = car;
+		document.getElementById("rr3").innerHTML = ca;
+
+	}
+
+
+
+</script>
+
+
+
+
+@*----------------  searech by course  ----------------*@
+<script>
+	function searchCourse(table) {
+		var tr, td;
+		var selectValue = $("#myInput5 option:selected").text().toUpperCase();
+
+		if (selectValue == "COURSES")
+			return 1;
+
+		tr = table.getElementsByTagName("tr")[1]; // get the row that have the course name
+
+		td = tr.getElementsByTagName("td")[3];  // get the table data of course name from table row
+
+		if (td) {
+			if (td.innerHTML.toUpperCase().indexOf(selectValue) > -1)
+				return 1;
+
+			return 0;
+
+		}
+
+	}
+</script>
+@*  ----------------  searech by hospital  ---------------- *@
+<script>
+	function searchHospital(table) {
+		var tr, td;
+		var selectValue = $("#myInput6 option:selected").text().toUpperCase();
+
+		if (selectValue == "HOSPITALS")
+			return 1;
+
+		tr = table.getElementsByTagName("tr")[1]; // get the row that have the Hospital name
+
+		td = tr.getElementsByTagName("td")[4];  // get the table data of Hospital name from table row
+
+		if (td) {
+			if (td.innerHTML.toUpperCase().indexOf(selectValue) > -1)
+				return 1;
+
+			return 0;
+
+		}
+
+	}
+</script>
+@*  ----------------  searech by day  ---------------- *@
+<script>
+	function searchDay(table) {
+		var tr, td;
+		var selectValue = $("#myInput7 option:selected").text().toUpperCase();
+
+		if (selectValue == "DAYS")
+			return 1;
+
+		tr = table.getElementsByTagName("tr")[1]; // get the row that have the DAY name
+
+		td = tr.getElementsByTagName("td")[5];  // get the table data of DAY name from table row
+
+		if (td) {
+			if (td.innerHTML.toUpperCase().indexOf(selectValue) > -1)
+				return 1;
+
+			return 0;
+
+		}
+
+	}
+</script>

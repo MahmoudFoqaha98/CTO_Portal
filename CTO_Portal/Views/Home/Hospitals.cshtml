@@ -1,0 +1,87 @@
+﻿@model IEnumerable<CTO_Portal.Models.hospital>
+
+@{
+	ViewBag.Title = "Hospitals";
+	Layout = "~/Views/Shared/_LayoutAdminDashboard.cshtml";
+}
+
+
+<div style="width: 95%; padding-top: 15px; padding-bottom: 10px; margin-left: 2%;">
+
+	<h1 style="color: #FFFFFF;text-shadow: 0 1px 0 #CCCCCC, 0 2px 0 #c9c9c9, 0 3px 0 #bbb, 0 4px 0 #b9b9b9, 0 5px 0 #aaa, 0 6px 1px rgba(0,0,0,.1), 0 0 5px rgba(0,0,0,.1), 0 1px 3px rgba(0,0,0,.3), 0 3px 5px rgba(0,0,0,.2), 0 5px 10px rgba(0,0,0,.25), 0 10px 10px rgba(0,0,0,.2), 0 20px 20px rgba(0,0,0,.15);color: #FFFFFF;">
+		Hospitals
+	</h1>
+	<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for Hospital by name...">
+	<a href="/Home/CreateHospital" class="btn btn-primary">
+		Create new
+		&nbsp;
+		<img src="~/Content/images/icon_add.png" class="nv-icons2" />
+	</a>
+	<br />
+</div>
+
+
+<div class="table-wrapper" style="width: 95%; background-color: white; padding-top: 15px; padding-bottom: 10px; margin-left: 2%;">
+	<div class="table-wrapper" style="width: 95%; background-color: white; padding-top: 15px; padding-bottom: 10px; margin-left: 2%;">
+		<table id="myTable" class="fl-table" style="border: 2px solid #324960">
+			<thead>
+				<tr>
+					<th class="table_border"  style="width:5%">#</th>
+					<th class="table_border" style="width:80%"> @Html.DisplayNameFor(model => model.name) </th>
+					<th class="table_border" style="width:15%"> Actions</th>
+				</tr>
+			</thead>
+			@{
+				int i = 1;
+			}
+			@foreach (var item in Model)
+			{
+				<tr>
+					<td class="table_border" style="width:5%"> @(i++)  </td>
+					<td class="table_border" style="width:80%"> @Html.DisplayFor(modelItem => item.name)  </td>
+					<td class="table_border" style="width:15%">
+						<a href="@Url.Action("EditHospital","Home", new { id = item.Id } )" class="btn btn-success">
+							<i class="fas fa-edit"></i>
+							Edit
+						</a>
+					</td>
+				</tr>
+			}
+
+		</table>
+	</div>
+</div>
+	<br />
+	<div style="width: 95%; padding-top: 15px; padding-bottom: 10px; margin-left: 2%;">
+		<a href="@Url.Action("adminDashboard","Home")" class="btn btn-warning">
+			<i class="fas fa-arrow-circle-left"></i>
+			Back
+		</a>
+	</div>
+
+
+
+
+	<script>
+		function myFunction() {
+			// Declare variables
+			var input, filter, table, tr, td, i, txtValue;
+			input = document.getElementById("myInput");
+			filter = input.value.toUpperCase();
+			table = document.getElementById("myTable");
+			tr = table.getElementsByTagName("tr");
+
+			// Loop through all table rows, and hide those who don't match the search query
+			for (i = 0; i < tr.length; i++) {
+				td = tr[i].getElementsByTagName("td")[1];
+				if (td) {
+					txtValue = td.textContent || td.innerText;
+					if (txtValue.toUpperCase().indexOf(filter) > -1) {
+						tr[i].style.display = "";
+					} else {
+						tr[i].style.display = "none";
+					}
+				}
+			}
+		}
+	</script>
